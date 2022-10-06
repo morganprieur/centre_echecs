@@ -1,1 +1,1 @@
-{"players": {"1": {"lastname": "nom1", "firstname": "pr\u00e9nom1", "birthdate": "2001-10-06", "genre": "M", "classement": "44"}, "2": {"lastname": "nom2", "firstname": "pr\u00e9nom2", "birthdate": "2002-10-06", "genre": "F", "classement": "35"}}}
+{"players": {"1": {"lastname": "n01", "firstname": "p01", "birthdate": "2001", "genre": "M", "classement": "101"}, "2": {"lastname": "n02", "firstname": "p02", "birthdate": "2002", "genre": "M", "classement": "102"}}}
