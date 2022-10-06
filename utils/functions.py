@@ -37,7 +37,7 @@ def prompt_for_players_data():
 
     print('\nplayers_to_register (ln38) : ', players_to_register) 
 
-    while nb_players_registered <= players_to_register: 
+    while players_to_register > 0: 
 
         # print('\players_to_register (ln42) : ', players_to_register) 
 
