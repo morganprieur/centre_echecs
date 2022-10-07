@@ -1,6 +1,7 @@
 # tu use prompt as an instance 
 from prompt_toolkit import PromptSession 
 session = PromptSession() 
+import re 
 
 
 def prompt_for_players_data(): 
@@ -37,7 +38,7 @@ def prompt_for_players_data():
             'Enter the player birth day (DD): \n'
         ) 
         ask_for_genre = session.prompt(
-            'Enter the player genre (M, F, O for "other"): \n'
+            'Enter the player genre (M, F, O for "other") in capitals: \n'
         ) 
         ask_for_classement = int(session.prompt(
             'Enter the player classement: \n'
@@ -46,8 +47,40 @@ def prompt_for_players_data():
         # formate data 
         lastname = ask_for_lastname.capitalize() 
         firstname = ask_for_firstname.capitalize() 
-        birthdate = f'{str(ask_for_birth_year)}-{str(ask_for_birth_month)}-{str(ask_for_birth_day)}' 
-        genre = ask_for_genre 
+        x_year = re.search('^\d\d\d\d$', ask_for_birth_year) 
+        print(x_year) 
+        if x_year:  # ask_for_birth_year == 
+            year = ask_for_birth_year 
+            print(ask_for_birth_year) 
+        else: 
+            print(ask_for_birth_year) 
+            year = session.prompt(
+                'Bad format. Enter the player birth year with 4 digits: \n'
+            ) 
+
+        if re.search('^\d\d$', ask_for_birth_month) == True: 
+            month = ask_for_birth_month 
+            print(ask_for_birth_month) 
+        else: 
+            print(ask_for_birth_month) 
+            month = re.sub('^\d$', f'0{ask_for_birth_month}', ask_for_birth_month) 
+
+        if re.search('^\d\d$', ask_for_birth_day) == True: 
+            day = ask_for_birth_day 
+            print(ask_for_birth_day) 
+        else: 
+            print(ask_for_birth_day) 
+            day = re.sub('^\d$', f'0{ask_for_birth_day}', ask_for_birth_day) 
+        
+        birthdate = f'{str(year)}-{str(month)}-{str(day)}' 
+
+        if (ask_for_genre == 'M') | (ask_for_genre == 'F') | (ask_for_genre == 'O'): 
+            genre = ask_for_genre 
+        else: 
+            genre = session.prompt(
+                'Unknown letter. Enter the player genre: M, F, O (for "other") in capitals: \n'
+            ) 
+
         classement = ask_for_classement 
 
         player_data = { 
