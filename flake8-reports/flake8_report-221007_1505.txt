@@ -1,0 +1,29 @@
+# à config ? .\project.py:4:80: E501 line too long (101 > 79 characters)
+à config ? .\project.py:15:80: E501 line too long (90 > 79 characters)
+# à config ? .\project.py:29:80: E501 line too long (97 > 79 characters)
+??? .\project.py:56:17: E251 unexpected spaces around keyword / parameter equals
+??? .\project.py:56:19: E251 unexpected spaces around keyword / parameter equals
+??? .\project.py:57:18: E251 unexpected spaces around keyword / parameter equals
+??? .\project.py:57:20: E251 unexpected spaces around keyword / parameter equals
+??? .\project.py:58:18: E251 unexpected spaces around keyword / parameter equals
+??? .\project.py:58:20: E251 unexpected spaces around keyword / parameter equals
+??? .\project.py:59:14: E251 unexpected spaces around keyword / parameter equals
+??? .\project.py:59:16: E251 unexpected spaces around keyword / parameter equals
+??? .\project.py:60:19: E251 unexpected spaces around keyword / parameter equals
+??? .\project.py:60:21: E251 unexpected spaces around keyword / parameter equals
+à config ? .\project.py:66:80: E501 line too long (88 > 79 characters)
+à config ? .\project.py:68:80: E501 line too long (80 > 79 characters)
+brouillon .\project.py:104:1: E303 too many blank lines (5)
+à config ? .\Models\player_model.py:17:80: E501 line too long (104 > 79 characters)
+
+??? .\utils\functions.py:85:21: E251 unexpected spaces around keyword / parameter equals
+??? .\utils\functions.py:85:23: E251 unexpected spaces around keyword / parameter equals
+??? .\utils\functions.py:86:22: E251 unexpected spaces around keyword / parameter equals
+??? .\utils\functions.py:86:24: E251 unexpected spaces around keyword / parameter equals
+??? .\utils\functions.py:87:22: E251 unexpected spaces around keyword / parameter equals
+??? .\utils\functions.py:87:24: E251 unexpected spaces around keyword / parameter equals
+??? .\utils\functions.py:88:18: E251 unexpected spaces around keyword / parameter equals
+??? .\utils\functions.py:88:20: E251 unexpected spaces around keyword / parameter equals
+??? .\utils\functions.py:89:23: E251 unexpected spaces around keyword / parameter equals
+??? .\utils\functions.py:89:25: E251 unexpected spaces around keyword / parameter equals
+
