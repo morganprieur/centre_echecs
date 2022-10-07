@@ -1,7 +1,7 @@
 from cmd import PROMPT
 from Models import player_model 
 # functions 
-from utils.functions import prompt_for_players_data, serialize_player 
+from utils.functions import prompt_for_players_data, serialize_player, serialize_multi_players 
 
 # TinyDB 
 from tinydb import TinyDB 
@@ -73,21 +73,22 @@ print('\n')
 print('players : ', players) 
 
 
+serialized_players = serialize_multi_players(players) 
 
 # liste pour les joueurs sérilisés 
-serialized_players = [] 
+# serialized_players = [] 
 
-for po in range(len(players)): 
-    print(f'po : {po}\n') 
-    player_s = serialize_player( 
-        lastname = players[po].lastname, 
-        firstname = players[po].firstname, 
-        birthdate = players[po].birthdate, 
-        genre = players[po].genre, 
-        classement = players[po].classement
-    ) 
-    print('player_s : ', player_s) 
-    serialized_players.append(player_s) 
+# for p_obj in range(len(players)): 
+#     print(f'p_obj : {p_obj}\n') 
+#     p_serial = serialize_player( 
+#         lastname = players[p_obj].lastname, 
+#         firstname = players[p_obj].firstname, 
+#         birthdate = players[p_obj].birthdate, 
+#         genre = players[p_obj].genre, 
+#         classement = players[p_obj].classement
+#     ) 
+#     print('p_serial : ', p_serial) 
+#     serialized_players.append(p_serial) 
 
 
 # Charger les joueurs sérialisés dans la bdd : 
