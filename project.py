@@ -1,4 +1,3 @@
-
 from Models import player_model 
 # functions 
 from utils.functions import prompt_for_players_data, serialize_multi_players  # , serialize_one_player 
@@ -9,80 +8,72 @@ db = TinyDB('db.json')
 players_table = db.table('players') 
 
 
-# TODO : 
-# X Au début de la saisie, demander combien de joueurs on doit enregistrer
-# X -> stocker ce nb dans une variable 
-# X -> stocker le nb de joueurs déjà enregistrés dans une autre variable (initialisée à 0) 
-# 
-# X Initialiser une liste players_data[] pour stocker les données par joueur 
-# 
-# X boucler tant que les joueurs qui restent à enregistrer ne sont pas à 0 : 
-# X  questions prompt pour remplir les attributs de l'objet player 
-# X  stocker chaque data dans un dictionnaire 
-# 
-#   X ajouter ce dict à la liste players_data[] 
-#   X incrémenter la variable du nb de joueurs enregsitrés 
-#   X décrémenter la variable du nb de joueurs à enregistrer 
-# 
-# X Récupérer la liste des données des joueurs players_data[] 
-# X Initialiser une liste pour les joueurs objets players[] 
-# X Boucler dans la liste des données des joueurs pour les instancier comme player_model.Player : 
-#   X Les stocker dans la liste des joueurs objets players[] 
-# 
-# X Initialiser une liste pour les joueurs sérialisés serialized_players[] 
-# X Boucler dans la liste des joueurs objets : 
-#   X les sérialiser 
-#   X les stocker dans la liste des joueurs sérialisés serialized_players[] 
-# 
-# X Enregistrer les joueurs sérialisés dans la DB 
-# 
+class Register_players(): 
 
-
-# Liste des dictionnaires de données récupérées via le prompt 
-players_data = prompt_for_players_data() 
-# pour débug 
-for pd in players_data: 
-    print(f'players_data[{pd}] : ', players_data) 
-    print('\n') 
-
-# Liste pour les joueurs objets 
-players = [] 
-# pour débug 
-count_players = 0 
-
-for data_dict in range(len(players_data)): 
-    print(f'x : {data_dict}\n') 
-    player_x = player_model.Player(
-        lastname = players_data[data_dict]['ask_for_lastname'], 
-        firstname = players_data[data_dict]['ask_for_firstname'], 
-        birthdate = players_data[data_dict]['ask_for_birthdate'], 
-        genre = players_data[data_dict]['ask_for_genre'], 
-        classement = players_data[data_dict]['ask_for_classement']
-    ) 
-    # print('player_x : ', player_x) 
-    players.append(player_x) 
-
+    # """
+        # >>> data_dict(player_x = player_model.Player(
+            #     lastname = 'nom', 
+            #     firstname = 'prénom', 
+            #     birthdate = '2022-10-06', 
+            #     genre = 'M', 
+            #     classement = 102
+            # )
+    #     3
+    #     >>> to_absolute(-4)
+    #     4
+    #     """
+    #     if number < 0: 
+    #         return -number 
+    #     else: 
+    #         return number 
+    # Liste des dictionnaires de données récupérées via le prompt 
+    players_data = prompt_for_players_data() 
     # pour débug 
-    # count_players += 1 if isinstance(player_x, player_model.Player) else count_players 
-    # if count_players > 1: 
-    #     print(f'There is {count_players} subscribers to the chess tournament') 
-    # else: 
-    #     print(f'There is {count_players} subscriber to the chess tournament') 
+    for pd in range(len(players_data)): 
+        print(f'pd : {pd}\n') 
+        print(f'players_data[{pd}] : ', players_data[pd]) 
+        print('\n') 
 
-# print('players : ', players) 
-# print('\n') 
+    # Liste pour les joueurs objets 
+    players = [] 
+    # pour débug 
+    # count_players = 0 
 
-# Liste pour les joueurs sérialisés 
-serialized_players = serialize_multi_players(players) 
+    for data_dict in range(len(players_data)): 
+        player_x = player_model.Player(
+            lastname = players_data[data_dict]['lastname'], 
+            firstname = players_data[data_dict]['firstname'], 
+            birthdate = players_data[data_dict]['birthdate'], 
+            genre = players_data[data_dict]['genre'], 
+            classement = players_data[data_dict]['classement']
+        ) 
+        # print('player_x : ', player_x) 
+        players.append(player_x) 
+
+        # pour débug 
+        # count_players += 1 if isinstance(player_x, player_model.Player) else count_players 
+        # if count_players > 1: 
+        #     print(f'There is {count_players} subscribers to the chess tournament') 
+        # else: 
+        #     print(f'There is {count_players} subscriber to the chess tournament') 
+
+    # print('players : ', players) 
+    # print('\n') 
 
 
-# Enregistrer les joueurs sérialisés dans la bdd : 
-players_table.truncate() 
-# players_table.insert(player1) # for 1 player 
-players_table.insert_multiple(serialized_players) 
+    # Liste pour les joueurs sérialisés 
+    serialized_players = serialize_multi_players(players) 
 
 
-# liste pour les joueurs sérilisés 
+    # Enregistrer les joueurs sérialisés dans la bdd : 
+    players_table.truncate() 
+    # players_table.insert(player1) # for 1 player 
+    players_table.insert_multiple(serialized_players) 
+
+
+
+
+# liste pour les joueurs sérialisés 
 # serialized_players = [] 
 
 # for p_obj in range(len(players)): 

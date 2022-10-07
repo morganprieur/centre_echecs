@@ -2,18 +2,6 @@
 from prompt_toolkit import PromptSession 
 session = PromptSession() 
 
-# Doctest 
-# def to_absolute(number): 
-#     """
-#     >>> to_absolute(3)
-#     3
-#     >>> to_absolute(-4)
-#     4
-#     """
-#     if number < 0: 
-#         return -number 
-#     else: 
-#         return number 
 
 def prompt_for_players_data(): 
     """ Get the players data via prompt inputs in the console """
@@ -21,9 +9,9 @@ def prompt_for_players_data():
     # Liste pour les données des joueurs 
     players_data = [] 
 
-    ask_for_number_of_players = session.prompt(
+    ask_for_number_of_players = int(session.prompt(
         'How many players left ? \n'
-    ) 
+    )) 
 
     # nb_players_registered = 0 
     players_to_register = int(ask_for_number_of_players) 
@@ -33,23 +21,44 @@ def prompt_for_players_data():
     while players_to_register > 0: 
 
         # Prompt to ask the attributes of one player 
+        ask_for_lastname = session.prompt(
+            'Enter the player lastname: \n'
+        ) 
+        ask_for_firstname = session.prompt(
+            'Enter the player firstname: \n'
+        ) 
+        ask_for_birth_year = session.prompt(
+            'Enter the player birth year (YYYY): \n'
+        ) 
+        ask_for_birth_month = session.prompt(
+            'Enter the player birth month (MM): \n'
+        ) 
+        ask_for_birth_day = session.prompt(
+            'Enter the player birth day (DD): \n'
+        ) 
+        ask_for_genre = session.prompt(
+            'Enter the player genre (M, F, O for "other"): \n'
+        ) 
+        ask_for_classement = int(session.prompt(
+            'Enter the player classement: \n'
+        )) 
+
+        # formate data 
+        lastname = ask_for_lastname.capitalize() 
+        firstname = ask_for_firstname.capitalize() 
+        birthdate = f'{str(ask_for_birth_year)}-{str(ask_for_birth_month)}-{str(ask_for_birth_day)}' 
+        genre = ask_for_genre 
+        classement = ask_for_classement 
+
         player_data = { 
-            'ask_for_lastname': session.prompt(
-                'Enter the player lastname: \n'
-            ), 
-            'ask_for_firstname': session.prompt(
-                'Enter the player firstname: \n'
-            ), 
-            'ask_for_birthdate': session.prompt(
-                'Enter the player birthdate: \n'
-            ), 
-            'ask_for_genre': session.prompt(
-                'Enter the player genre: \n'
-            ), 
-            'ask_for_classement': session.prompt(
-                'Enter the player classement: \n'
-            ) 
+            'lastname': lastname, 
+            'firstname': firstname, 
+            'birthdate': birthdate, 
+            'genre': genre, 
+            'classement': classement 
         } 
+
+        print('player_data : ', player_data) 
 
         players_data.append(player_data) 
         # nb_players_registered += 1 
