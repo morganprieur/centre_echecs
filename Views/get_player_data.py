@@ -15,6 +15,18 @@ class Player_prompt_view():
 #     prnt = Try_controller() 
 #     # pass 
 
+
+    # def list_players(formated_player_data): 
+
+    #     # players = [] 
+    #     print(f'players objects ? ln54 : {players}') 
+    #     players.append(formated_player_data) 
+
+    #     print(f'players objects ? ln57 : {players}') 
+
+    #     return players 
+
+
     def prompt_for_player_data(): 
         """ Get the player data via prompt inputs in the console. 
             The player_controller gets the data and send it to the player_model, 
@@ -27,12 +39,6 @@ class Player_prompt_view():
         # Prompts for tournament configuration 
         # ask_for_current_year = int(session.prompt('What\'s the current year ?\n')) 
         # ask_for_min_age = int(session.prompt('What is the min. age ?\n')) 
-
-        # ask_for_number_of_players = session.prompt('How many players left ? \n') 
-        # players_to_register = int(ask_for_number_of_players) 
-        # print('\nplayers_to_register (ln20) : ', players_to_register) 
-
-        # while players_to_register > 0: 
 
         # Prompt to ask the attributes of one player 
         ask_for_lastname = session.prompt('Enter the player lastname: \n') 
@@ -50,19 +56,17 @@ class Player_prompt_view():
             'genre': ask_for_genre, 
             'classement': ask_for_classement 
         } 
+
         # players_data.append(player_data) 
-
-        # players_to_register -= 1 
-        # print('\nplayers_to_register (ln64) : ', players_to_register) 
-
-
         # formated_player_data = formate_data(player_data) 
+        # return player_data 
 
         return player_data 
 
 
     def formate_data(player_data): 
 
+        # formated_players = [] 
         formated_player_data = {} 
 
         # formate data 
@@ -89,48 +93,40 @@ class Player_prompt_view():
             ) 
         
         formated_player_data['classement'] = player_data['classement'] 
+        print(f'formated_player_data ln V48 : {formated_player_data}') 
 
+#         formated_players.append(formated_player_data) 
 
+# # Faire une liste de formated_playerS_data 
+#         print(f'formated_players ln V52 : {formated_players}') 
+
+#         return formated_players 
         return formated_player_data 
 
 
-
-    # def formate_data(players_data): 
-
-    #     formated_players_data = {} 
-
-    #     # formate data 
-    #     formated_players_data['lastname'] = int(players_data['ask_for_lastname']).capitalize() 
-    #     formated_players_data['firstname'] = int(players_data['ask_for_firstname']).capitalize() 
-
-    #     # lastname = ask_for_lastname.capitalize() 
-    #     # firstname = ask_for_firstname.capitalize() 
-
-    #     # annee_en_cours = ask_for_current_year 
-    #     # age_mini = ask_for_min_age 
-
-    #     # formate birthdate 
-    #     if re.search('\d\d\d\d[-\d\d]+', players_data['ask_for_birthdate']): 
-    #         # print(re.search('\d\d\d\d[-\d\d]+', ask_for_birthdate)) 
-    #         formated_players_data['birthdate'] = players_data['ask_for_birthdate'] 
-    #         print(f'birthdate : {formated_players_data["birthdate"]}') 
-    #     else: 
-    #         formated_players_data['birthdate'] = session.prompt('Enter the player birthdate (YYYY-MM-DD): \n') 
-    #         print(f'ask_for_birthdate : {formated_players_data["birthdate"]}') 
-
-    #     # formate genre 
-    #     if (players_data['ask_for_genre'] == 'M') | (players_data['ask_for_genre'] == 'F') | (players_data['ask_for_genre'] == 'O'): 
-    #         formated_players_data['genre'] = players_data['ask_for_genre'] 
-    #     else: 
-    #         formated_players_data['genre'] = session.prompt(
-    #             'Unknown letter. Enter the player genre: M, F, O (for "other") in capitals: \n'
-    #         ) 
+    def get_many_players(): 
         
-    #     formated_players_data['classement'] = players_data['ask_for_classement'] 
+        ask_for_number_of_players = session.prompt('How many players left ? \n') 
+        players_to_register = int(ask_for_number_of_players) 
+        print('\nplayers_to_register (ln20) : ', players_to_register) 
 
+        formated_players = [] 
+        while players_to_register > 0: 
 
-    #     return formated_players_data 
+            player_data = Player_prompt_view.prompt_for_player_data() 
+            formated_player_data = Player_prompt_view.formate_data(player_data) 
 
+            formated_players.append(formated_player_data) 
+            print(f'formated_players ln V120 : {formated_players}') 
+            # players = Player_prompt_view.list_players(formated_player_data) 
 
+            # print(f'players ln 112 : {players}') 
+            # players.append(formated_players_data) 
+            # print(f'players ln 114 : {players}') 
+
+            players_to_register -= 1 
+            print('\nplayers_to_register (ln91) : ', players_to_register) 
+        
+        return formated_players 
 
 
