@@ -2,9 +2,12 @@
 
 
 
-import os
+from Controllers.player_controller import Player_controller 
+from Models.player_model import Player 
+from Views.dashboard_view import Dashboard_view 
+from Views.get_player_view import Get_player_view 
 
-from Controllers import player_controller 
+import os
 
 # TinyDB 
 from tinydb import TinyDB 
@@ -15,20 +18,20 @@ players_table = db.table('players')
 # folder = os.path.dirname(__file__) 
 
 
-
 if __name__ == "__main__": 
 
-    from Models.player_model import Player 
-    from Controllers.player_controller import Register_player 
-    from Views.get_player_data import Player_prompt_view 
+    # dashboard 
+    # welcome = Dashboard_view.welcome_view(Dashboard_view) 
+    
 
-
-    formated_players = Player_prompt_view.get_many_players() 
-    players = Register_player.instantiate_players(formated_players) 
-    serialized_players = Register_player.serialize_multi_players(players) 
+    # # players 
+    formated_players = Get_player_view.get_many_players() 
+    players = Player_controller.instantiate_players(formated_players) 
+    serialized_players = Player_controller.serialize_multi_players(players) 
     # print(f'serialized_players[0]["lastname"] ln51 : {serialized_players[0]["lastname"]}') 
     # print(f'serialized_players[1]["lastname"] ln51 : {serialized_players[1]["lastname"]}') 
     
+    ### A mettre dans le model 
     # Vider la BDD avant d'enregistrer les nouveaux joueurs 
     # (ne pas le faire pour les tournois) 
     players_table.truncate() 

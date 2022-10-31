@@ -6,16 +6,19 @@ from Models.player_model import Player
 
 import re 
 
-# TinyDB 
-# from tinydb import TinyDB 
-# db = TinyDB('db.json') 
-# players_table = db.table('players') 
 
 
-
-class Register_player(): 
+class Player_controller(): 
 
     def instantiate_players(formated_players): 
+        """ Set the list of players into a list of objects Player. 
+
+        Args:
+            formated_players (list): the list of the players with formated data 
+
+        Returns:
+            list: the players in form of object Player 
+        """
 
         # Liste pour les joueurs objets 
         players = [] 
@@ -23,8 +26,7 @@ class Register_player():
         print(f'formated_players ln C23 : {formated_players}') 
 
         for data_dict in range(len(formated_players)): 
-        
-            player_x = Player(  # player_model. 
+            player_x = Player( 
                 lastname=formated_players[data_dict]['lastname'], 
                 firstname=formated_players[data_dict]['firstname'], 
                 birthdate=formated_players[data_dict]['birthdate'], 
@@ -42,6 +44,14 @@ class Register_player():
 
 
     def serialize_multi_players(players): 
+        """ Serialization of the players data in order to register them in the DB 
+
+        Args:
+            players (list): list of objects Player 
+
+        Returns:
+            list: the players in the expected format fo the DB 
+        """
 
         serialized_players = [] 
 

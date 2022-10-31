@@ -8,7 +8,6 @@
 # players_table = db.table('players') 
 
 
-
 class Player(): 
 
     def __init__(self, lastname, firstname, birthdate, genre, classement): 

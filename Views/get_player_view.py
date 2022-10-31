@@ -9,11 +9,7 @@ session = PromptSession()
 import re 
 
 
-class Player_prompt_view(): 
-
-#     prnt = Try_controller() 
-#     # pass 
-
+class Get_player_view(): 
 
     def prompt_for_player_data(): 
         """ Get the player data via prompt inputs in the console. 
@@ -46,6 +42,14 @@ class Player_prompt_view():
 
 
     def formate_data(player_data): 
+        """ Formate data for the current player 
+
+        Args:
+            player_data (dictionnary): the raw data, entered by the administrator 
+
+        Returns:
+            dictionnary: the formated data for one player 
+        """
 
         formated_player_data = {} 
 
@@ -53,7 +57,7 @@ class Player_prompt_view():
         formated_player_data['lastname'] = player_data['lastname'].capitalize() 
         formated_player_data['firstname'] = player_data['firstname'].capitalize() 
 
-        # formate birthdate 
+        # for formating birthdate 
         # annee_en_cours = ask_for_current_year 
         # age_mini = ask_for_min_age 
         if re.search('\d\d\d\d[-\d\d]+', player_data['birthdate']): 
@@ -79,6 +83,11 @@ class Player_prompt_view():
 
 
     def get_many_players(): 
+        """ Group the current players in one list 
+
+        Returns:
+            list: list of the current players, with data verified and formated in order to work with 
+        """
         
         # Players to register 
         ask_for_number_of_players = session.prompt('How many players left ? \n') 
@@ -88,8 +97,8 @@ class Player_prompt_view():
         formated_players = [] 
         while players_to_register > 0: 
 
-            player_data = Player_prompt_view.prompt_for_player_data() 
-            formated_player_data = Player_prompt_view.formate_data(player_data) 
+            player_data = Get_player_view.prompt_for_player_data() 
+            formated_player_data = Get_player_view.formate_data(player_data) 
 
             formated_players.append(formated_player_data) 
             print(f'formated_players ln V95 : {formated_players}') 
