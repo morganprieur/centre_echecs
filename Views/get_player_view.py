@@ -2,6 +2,9 @@
 
 
 
+# test 
+from test.player_test import Set_player_data 
+
 from prompt_toolkit import PromptSession 
 # to use prompt as an instance 
 session = PromptSession() 
@@ -12,6 +15,8 @@ import re
 class Get_player_view(): 
 
     def prompt_for_player_data(): 
+
+    # def prompt_for_player_data(): 
         """ Get the player data via prompt inputs in the console. 
             The player_controller gets the data and send it to the player_model, 
             that formates them in order to send them to the DB. 
@@ -69,12 +74,15 @@ class Get_player_view():
             print(f'ask_for_birthdate : {formated_player_data["birthdate"]}') 
 
         # formate genre 
-        if (player_data['genre'] == 'M') | (player_data['genre'] == 'F') | (player_data['genre'] == 'O'): 
-            formated_player_data['genre'] = player_data['genre'] 
-        else: 
-            formated_player_data['genre'] = session.prompt(
-                'Unknown letter. Enter the player genre: M, F, O (for "other") in capitals: \n'
-            ) 
+        # if (player_data['genre'] == 'M') | (player_data['genre'] == 'F') | (player_data['genre'] == 'O'): 
+        #     print(f'Unknown letter : {player_data["genre"]}\n') 
+        #     formated_player_data['genre'] = player_data['genre'] 
+        # else: 
+        #     print(f'type of genre : {type(player_data["genre"])}') 
+        #     formated_player_data['genre'] = session.prompt( 
+        #         f'Unknown letter : {player_data["genre"]}Enter the player genre: M, F, O (for "other") in capitals: \n'
+        #     ) 
+        formated_player_data['genre'] = player_data['genre'] 
         
         formated_player_data['classement'] = player_data['classement'] 
         print(f'formated_player_data ln V48 : {formated_player_data}') 
@@ -88,23 +96,34 @@ class Get_player_view():
         Returns:
             list: list of the current players, with data verified and formated in order to work with 
         """
-        
+
         # Players to register 
         ask_for_number_of_players = session.prompt('How many players left ? \n') 
+
         players_to_register = int(ask_for_number_of_players) 
         print('\nplayers_to_register (ln20) : ', players_to_register) 
 
         formated_players = [] 
-        while players_to_register > 0: 
 
-            player_data = Get_player_view.prompt_for_player_data() 
-            formated_player_data = Get_player_view.formate_data(player_data) 
+        # Choix test ou pas : 
+        test_ou_pas = session.prompt('test ? (Y/N)') 
+        if test_ou_pas == 'Y': 
+            # test players 
+            player_data = Set_player_data.test_players(players_to_register) 
 
-            formated_players.append(formated_player_data) 
-            print(f'formated_players ln V95 : {formated_players}') 
+        else: 
+            while players_to_register > 0: 
+                player_data = Get_player_view.prompt_for_player_data() 
 
-            players_to_register -= 1 
-            print('\nplayers_to_register (ln91) : ', players_to_register) 
+
+        # player_data = Get_player_view.prompt_for_player_data() 
+        formated_player_data = Get_player_view.formate_data(player_data) 
+
+        formated_players.append(formated_player_data) 
+        print(f'formated_players ln V95 : {formated_players}') 
+
+        players_to_register -= 1 
+        print('\nplayers_to_register (ln91) : ', players_to_register) 
         
         return formated_players 
 
