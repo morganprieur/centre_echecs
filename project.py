@@ -8,7 +8,7 @@ from Views.dashboard_view import Dashboard_view
 from Views.get_player_view import Get_player_view 
 
 # player test 
-from test.player_test import Set_player_data 
+# from test.player_test import Get_player_data 
 
 import os
 
