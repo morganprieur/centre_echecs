@@ -110,7 +110,7 @@ class Get_player_view():
             } 
 
             # # formate data for one player 
-            # formated_player_data = Get_player_view.formate_data(player_data) 
+            formated_player_data = Get_player_view.formate_data(player_data) 
             
             # print(f'formated_players ln V113 : {formated_players}') 
             formated_players.append(formated_player_data) 
