@@ -7,6 +7,9 @@ from Models.player_model import Player
 from Views.dashboard_view import Dashboard_view 
 from Views.get_player_view import Get_player_view 
 
+# player test 
+# from test.player_test import Get_player_data 
+
 import os
 
 # TinyDB 
@@ -17,12 +20,27 @@ players_table = db.table('players')
 # # Dossier du projet 
 # folder = os.path.dirname(__file__) 
 
+# pour test 
+from prompt_toolkit import PromptSession 
+# to use prompt as an instance 
+session = PromptSession() 
+
+
 
 if __name__ == "__main__": 
 
     # dashboard 
     # welcome = Dashboard_view.welcome_view(Dashboard_view) 
     
+    """ Ici ou dans la view ? """ 
+    # # Choix test ou pas : 
+    # test_ou_pas = session.prompt('test ? (Y/N') 
+    # if test_ou_pas == 'Y': 
+    #     # test players 
+    #     Set_player_data.test_players() 
+    # else: 
+    #     Get_player_view.prompt_for_player_data() 
+
 
     # # players 
     formated_players = Get_player_view.get_many_players() 
@@ -33,13 +51,8 @@ if __name__ == "__main__":
     
     ### A mettre dans le model 
     # Vider la BDD avant d'enregistrer les nouveaux joueurs 
-    # (ne pas le faire pour les tournois) 
+    # (ne pas le faire pour les tournois, si on doit garder un historique des tournois) 
     players_table.truncate() 
     # # Enregistrer les joueurs sérialisés dans la bdd : 
     players_table.insert_multiple(serialized_players) 
-
-
-
-
-
 

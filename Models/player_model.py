@@ -24,7 +24,7 @@ class Player():
             born = 'né'
         elif self.genre == 'F': 
             born = 'née' 
-        elif self.genre == 'O': 
+        elif self.genre == 'A': 
             born = 'né.e' 
         return f'{self.firstname} {self.lastname} {born} on {self.birthdate}, place: {self.classement}.' 
 
