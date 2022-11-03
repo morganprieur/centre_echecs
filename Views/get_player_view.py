@@ -14,63 +14,85 @@ import re
 
 class Get_player_view(): 
 
+    # def formate_data(player_data): 
+    #     pass 
+
+    def get_data_file(players_to_register): 
+
+        # Prompts for tournament configuration 
+        # ask_for_current_year = int(session.prompt('What\'s the current year ?\n')) 
+        # ask_for_min_age = int(session.prompt('What is the min. age ?\n')) 
+        
+        formated_players = [] 
+        print(f'\nformated_players ln V24 : {formated_players}') 
+        formated_player_data = {} 
+
+        while players_to_register > 0: 
+            with open("./utils/players_data.txt", "r") as file: 
+                lines = file.readlines() 
+                # print(f'lines : {lines}') 
+                for d in range(players_to_register): 
+                    # print(f'd avt : {d}') 
+                    start = d*5 
+                    # print(f'start avt : {start}') 
+                    end = start+5 
+                    # print(f'end avt : {end}') 
+                    step = 5 
+                    for i in range(start, end, step): 
+                        x = i 
+                        # print(f'x : {x}') 
+                        data_sets = lines[x:x+step] 
+                        # print(f'data_sets : {data_sets}') 
+
+                        # print(f'ligne : {0}') 
+                        ask_for_lastname = data_sets[0] 
+                        # print(f'ask_for_lastname : {ask_for_lastname}') 
+                        # print(f'ligne : {1}') 
+                        ask_for_firstname = data_sets[1] 
+                        # print(f'ask_for_firstname : {ask_for_firstname}') 
+                        # print(f'ligne : {2}') 
+                        ask_for_birthdate = data_sets[2] 
+                        # print(f'ask_for_birthdate : {ask_for_birthdate}') 
+                        # print(f'ligne : {3}') 
+                        ask_for_genre = data_sets[3] 
+                        # print(f'ask_for_genre : {ask_for_genre}') 
+                        # print(f'ligne : {4}') 
+                        ask_for_classement = data_sets[4] 
+                        # print(f'ask_for_classement : {ask_for_classement}') 
+                    
+                        # Data for one player 
+                        player_data = { 
+                            'lastname': ask_for_lastname, 
+                            'firstname': ask_for_firstname, 
+                            'birthdate': ask_for_birthdate, 
+                            'genre': ask_for_genre, 
+                            'classement': ask_for_classement 
+                        } 
+                        # print(f'player_data V71 : {player_data}') 
+
+                        # formate data for one player 
+                        formated_player_data = Get_player_view.formate_data(player_data) 
+                        
+                        # print(f'formated_players ln V76 : {formated_players}') 
+                        formated_players.append(formated_player_data) 
+                        # print(f'formated_players ln V78 : {formated_players}') 
+
+                    players_to_register -= 1 
+                    print(f'players_to_register (ln91) : {players_to_register}') 
+
+        return formated_players 
+
+
+
     # def prompt_for_player_data(): 
     def prompt_for_player_data(players_to_register): 
         """ Get the player data via prompt inputs in the console. 
             The player_controller gets the data and send it to the player_model, 
             that formates them in order to send them to the DB. 
         """ 
-
-        # Prompts for tournament configuration 
-        # ask_for_current_year = int(session.prompt('What\'s the current year ?\n')) 
-        # ask_for_min_age = int(session.prompt('What is the min. age ?\n')) 
-        
-        player_data = {} 
-
-        # Choix test ou pas : 
-        test_ou_pas = session.prompt('test ? (Y/N)') 
-
-        if test_ou_pas == 'Y': 
-            # player_data = Get_player_data.test_players(players_to_register) 
-            # while players_to_register > 0: 
-            with open("./utils/players_data.txt", "r") as file: 
-                lines = file.readlines() 
-                for pl_reg in range(players_to_register): 
-                    print(f'type of lines : {type(lines)}') 
-                    
-                    # for pl_reg in range(players_to_register): 
-                    # for line in range(len(lines)%(players_to_register*5)): 
-                    # print(f'players_to_register : {players_to_register}') 
-                    print(f'pl_reg : {pl_reg}') 
-                    # print(f'line : {line}') 
-                    # while line < player_datas: 
-                    ask_for_lastname = lines[(pl_reg*5)] 
-                    print(f'ligne : {pl_reg*5}') 
-                    print(f'ask_for_lastname : {ask_for_lastname}') 
-                    ask_for_firstname = lines[(pl_reg*5)+1] 
-                    print(f'ligne : {(pl_reg*5)+1}') 
-                    print(f'ask_for_firstname : {ask_for_firstname}') 
-                    ask_for_birthdate = lines[(pl_reg*5)+2] 
-                    print(f'ligne : {(pl_reg*5)+2}') 
-                    print(f'ask_for_birthdate : {ask_for_birthdate}') 
-                    ask_for_genre = lines[(pl_reg*5)+3] 
-                    print(f'ligne : {(pl_reg*5)+3}') 
-                    print(f'ask_for_genre : {ask_for_genre}') 
-                    ask_for_classement = lines[(pl_reg*5)+4] 
-                    print(f'ligne : {(pl_reg*5)+4}') 
-                    print(f'ask_for_classement : {ask_for_classement}') 
-                    # Data for one player 
-                    player_data = { 
-                        'lastname': ask_for_lastname, 
-                        'firstname': ask_for_firstname, 
-                        'birthdate': ask_for_birthdate, 
-                        'genre': ask_for_genre, 
-                        'classement': ask_for_classement 
-                    } 
-                    print(f'player_data V70 : {player_data}') 
-
-        elif test_ou_pas == 'N': 
-
+        formated_players = [] 
+        while players_to_register > 0: 
+            print(f'formated_players V94 : {formated_players}') 
             # Prompt to ask the attributes of one player 
             ask_for_lastname = session.prompt('Enter the player lastname: \n') 
             ask_for_firstname = session.prompt('Enter the player firstname: \n') 
@@ -87,7 +109,17 @@ class Get_player_view():
                 'classement': ask_for_classement 
             } 
 
-        return player_data 
+            # # formate data for one player 
+            # formated_player_data = Get_player_view.formate_data(player_data) 
+            
+            # print(f'formated_players ln V113 : {formated_players}') 
+            formated_players.append(formated_player_data) 
+            # print(f'formated_players ln V115 : {formated_players}') 
+
+            players_to_register -= 1 
+            # print(f'\nplayers_to_register (ln91) : {players_to_register}') 
+
+        return formated_players 
 
 
     def formate_data(player_data): 
@@ -97,7 +129,7 @@ class Get_player_view():
             player_data (dictionnary): the raw data, entered by the administrator 
 
         Returns:
-            dictionnary: the formated data for one player 
+            formated_player_data (dictionnary): the formated data for the current player 
         """
 
         formated_player_data = {} 
@@ -118,14 +150,14 @@ class Get_player_view():
             print(f'ask_for_birthdate : {formated_player_data["birthdate"]}') 
 
         # formate genre 
-        # if (player_data['genre'] == 'M') | (player_data['genre'] == 'F') | (player_data['genre'] == 'O'): 
-        #     print(f'Unknown letter : {player_data["genre"]}\n') 
-        #     formated_player_data['genre'] = player_data['genre'] 
-        # else: 
-        #     print(f'type of genre : {type(player_data["genre"])}') 
-        #     formated_player_data['genre'] = session.prompt( 
-        #         f'Unknown letter : {player_data["genre"]}Enter the player genre: M, F, O (for "other") in capitals: \n'
-        #     ) 
+        if (player_data['genre'] == 'M') | (player_data['genre'] == 'F') | (player_data['genre'] == 'O'): 
+            print(f'genre : {player_data["genre"]}\n') 
+            formated_player_data['genre'] = player_data['genre'] 
+        else: 
+            print(f'type of genre : {type(player_data["genre"])}') 
+            formated_player_data['genre'] = session.prompt( 
+                f'Unknown letter : {player_data["genre"]}Enter the player genre: M, F, O (for "other") in capitals: \n'
+            ) 
         formated_player_data['genre'] = player_data['genre'] 
         
         formated_player_data['classement'] = player_data['classement'] 
@@ -134,47 +166,26 @@ class Get_player_view():
         return formated_player_data 
 
 
-    def get_many_players(): 
-        """ Group the current players in one list 
+    def get_many_players():     # dans le controller ? 
+        """ Manages number of players and 'test' or 'not test'. 
 
         Returns:
-            list: list of the current players, with data verified and formated in order to work with 
-        """
+            formated_players (list): list of the formated players data, in order to work with them. 
+        """ 
 
-        # Players to register 
         ask_for_number_of_players = session.prompt('How many players left ? \n') 
-
         players_to_register = int(ask_for_number_of_players) 
-        print('\nplayers_to_register (ln20) : ', players_to_register) 
+        # print(f'players_to_register V178 : {players_to_register}') 
 
-        formated_players = [] 
+        # Choix test ou pas : 
+        test_or_not = session.prompt('test ? (Y/N)') 
 
-        # # Choix test ou pas : 
-        # test_ou_pas = session.prompt('test ? (Y/N)') 
+        if test_or_not == 'Y': 
+            formated_players = Get_player_view.get_data_file(players_to_register) 
         
-        # if test_ou_pas=='N': 
-        while players_to_register > 0: 
-            player_data = Get_player_view.prompt_for_player_data(players_to_register) 
+        elif test_or_not=='N': 
+            formated_players = Get_player_view.prompt_for_player_data(players_to_register) 
 
-            # player_data = Get_player_view.prompt_for_player_data() 
-            formated_player_data = Get_player_view.formate_data(player_data) 
-
-            formated_players.append(formated_player_data) 
-            print(f'formated_players ln V95 : {formated_players}')  # inversés 
-
-            players_to_register -= 1 
-            print('\nplayers_to_register (ln91) : ', players_to_register) 
-        
-
-
-            formated_player_data = Get_player_view.formate_data(player_data) 
-
-            formated_players.append(formated_player_data) 
-            print(f'formated_players ln V95 : {formated_players}')  # inversés 
-
-            players_to_register -= 1 
-            print('\nplayers_to_register (ln91) : ', players_to_register) 
-        
         return formated_players 
 
 

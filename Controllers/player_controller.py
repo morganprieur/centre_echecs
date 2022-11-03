@@ -55,8 +55,8 @@ class Player_controller():
         """
         serialized_players = [] 
 
-        print(f'players C48 : {players}')   # inversés 
-        print(f'players C48 : {players[0].lastname}') 
+        # print(f'players C48 : {players}')   # inversés 
+        # print(f'players C48 : {players[0].lastname}') 
         for p_obj in range(len(players)): 
 
             # print(f'type(p_obj) : {type(p_obj)}\n') 
