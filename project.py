@@ -32,16 +32,14 @@ if __name__ == "__main__":
     # dashboard 
     # welcome = Dashboard_view.welcome_view(Dashboard_view) 
     
+    """ Ici ou dans la view ? """ 
     # # Choix test ou pas : 
     # test_ou_pas = session.prompt('test ? (Y/N') 
-
     # if test_ou_pas == 'Y': 
     #     # test players 
     #     Set_player_data.test_players() 
-    
     # else: 
     #     Get_player_view.prompt_for_player_data() 
-
 
 
     # # players 
@@ -53,13 +51,8 @@ if __name__ == "__main__":
     
     ### A mettre dans le model 
     # Vider la BDD avant d'enregistrer les nouveaux joueurs 
-    # (ne pas le faire pour les tournois) 
+    # (ne pas le faire pour les tournois, si on doit garder un historique des tournois) 
     players_table.truncate() 
     # # Enregistrer les joueurs sérialisés dans la bdd : 
     players_table.insert_multiple(serialized_players) 
-
-
-
-
-
 

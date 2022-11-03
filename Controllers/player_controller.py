@@ -11,15 +11,12 @@ import re
 class Player_controller(): 
 
     def instantiate_players(formated_players): 
-        """ Set the list of players into a list of objects Player. 
-
+        """ Instantiate the players in a list of object Players. 
         Args:
-            formated_players (list): the list of the players with formated data 
-
+            formated_players (list): the list of the players formated data 
         Returns:
-            list: the players in form of object Player 
-        """
-
+            players (list): the players in form of object Player 
+        """ 
         # Liste pour les joueurs objets 
         players = [] 
 
@@ -43,26 +40,22 @@ class Player_controller():
         return players 
 
 
-
     def serialize_multi_players(players): 
-        """ Serialization of the players data in order to register them in the DB 
-
+        """ Serialization of the players data in order to register them 
+            in the DB. 
         Args:
-            players (list): list of objects Player 
-
+            players (list): list of object Players 
         Returns:
-            list: the players in the expected format fo the DB 
+            serialized_players (list): the players in the expected format for the DB 
         """
         serialized_players = [] 
 
         # print(f'players C48 : {players}')   # inversés 
         # print(f'players C48 : {players[0].lastname}') 
         for p_obj in range(len(players)): 
-
             # print(f'type(p_obj) : {type(p_obj)}\n') 
             # print(f'p_obj : {p_obj}\n') 
             # print(f'players[{p_obj}] : {players[p_obj]}\n') 
-
             serialized_player_data = {
                 'lastname': players[p_obj].lastname, 
                 'firstname': players[p_obj].firstname, 
@@ -73,7 +66,7 @@ class Player_controller():
 
             serialized_players.append(serialized_player_data) 
 
-        print(f'serialized_players ln M66 : {serialized_players}')  # inversés 
+        print(f'serialized_players C69 : {serialized_players}')  # inversés 
 
         return serialized_players 
 
