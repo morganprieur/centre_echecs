@@ -30,10 +30,11 @@ class Get_player_view():
         
         formated_players = [] 
         # print(f'\nformated_players V31 : {formated_players}') 
-        formated_player_data = {} 
+        # formated_player_data = {} 
 
         while players_to_register > 0: 
             with open("./utils/players_data.txt", "r") as file: 
+                # for line in file: 
                 lines = file.readlines() 
                 # print(f'lines : {lines}') 
                 for d in range(players_to_register): 
@@ -73,14 +74,15 @@ class Get_player_view():
                             'genre': ask_for_genre, 
                             'classement': ask_for_classement 
                         } 
-                        # print(f'player_data V75 : {player_data}') 
+                        print(f'player_data V75 : {player_data}') 
 
                         # formate data for one player 
                         formated_player_data = Get_player_view.formate_data(player_data) 
                         
-                        # print(f'formated_players V80 : {formated_players}') 
+                        print(f'formated_players V80 : {formated_players}') 
+                        # formated_players.append(formated_player_data.copy()) 
                         formated_players.append(formated_player_data) 
-                        # print(f'formated_players V82 : {formated_players}') 
+                        print(f'formated_players V82 : {formated_players}') 
 
                     players_to_register -= 1 
                     print(f'players_to_register (ln91) : {players_to_register}') 
@@ -88,7 +90,6 @@ class Get_player_view():
         return formated_players 
 
 
-    # def prompt_for_player_data(): 
     def prompt_for_player_data(players_to_register): 
         """ Get the player data via prompt inputs in the console, 
             store current player data in dictionary, 

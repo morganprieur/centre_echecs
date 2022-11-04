@@ -3,24 +3,20 @@
 
 
 from Controllers.player_controller import Player_controller 
-from Models.player_model import Player 
-from Views.dashboard_view import Dashboard_view 
-from Views.get_player_view import Get_player_view 
+from Controllers.match_controller import Match_controller 
+# from Models.player_model import Player 
+# from Models.match_model import Match 
+# from Views.dashboard_view import Dashboard_view 
+# from Views.get_player_view import Get_player_view 
 
 # player test 
 # from test.player_test import Get_player_data 
 
 import os
 
-# TinyDB 
-from tinydb import TinyDB 
-db = TinyDB('db.json') 
-players_table = db.table('players') 
-
 # # Dossier du projet 
 # folder = os.path.dirname(__file__) 
 
-# pour test 
 from prompt_toolkit import PromptSession 
 # to use prompt as an instance 
 session = PromptSession() 
@@ -29,30 +25,35 @@ session = PromptSession()
 
 if __name__ == "__main__": 
 
-    # dashboard 
-    # welcome = Dashboard_view.welcome_view(Dashboard_view) 
+    Player_controller.start() 
     
-    """ Ici ou dans la view ? """ 
-    # # Choix test ou pas : 
-    # test_ou_pas = session.prompt('test ? (Y/N') 
-    # if test_ou_pas == 'Y': 
-    #     # test players 
-    #     Set_player_data.test_players() 
-    # else: 
-    #     Get_player_view.prompt_for_player_data() 
+    # matches 
+    # Match_controller.insantiate_match() 
+
+    # # dashboard 
+    # # welcome = Dashboard_view.welcome_view(Dashboard_view) 
 
 
-    # # players 
-    formated_players = Get_player_view.get_many_players() 
-    players = Player_controller.instantiate_players(formated_players) 
-    serialized_players = Player_controller.serialize_multi_players(players) 
-    # print(f'serialized_players[0]["lastname"] ln51 : {serialized_players[0]["lastname"]}') 
-    # print(f'serialized_players[1]["lastname"] ln51 : {serialized_players[1]["lastname"]}') 
+    # # players     --> à corriger (répartition : contrôle des données dans le conrôleur !) 
+    # formated_players = Get_player_view.get_many_players() 
+    # players = Player_controller.instantiate_players(formated_players) 
+    # serialized_players = Player_controller.serialize_multi_players(players) 
+    # # print(f'serialized_players[0]["lastname"] ln51 : {serialized_players[0]["lastname"]}') 
+    # # print(f'serialized_players[1]["lastname"] ln51 : {serialized_players[1]["lastname"]}') 
     
-    ### A mettre dans le model 
-    # Vider la BDD avant d'enregistrer les nouveaux joueurs 
-    # (ne pas le faire pour les tournois, si on doit garder un historique des tournois) 
-    players_table.truncate() 
-    # # Enregistrer les joueurs sérialisés dans la bdd : 
-    players_table.insert_multiple(serialized_players) 
+    # project : 
+    #   while players_to_register > 0: 
+    #       Vue : prompt_for_players_data 
+    #       Controleur : formate_data (+ groupe dans une lsite de dicts) 
+    #   Modèle : instantiate_players 
+    #   Modèle : serialize_players 
+    #   Modèle : insert_multiple 
+
+    # # Vider la BDD avant d'enregistrer les nouveaux joueurs 
+    # # (ne pas le faire pour les tournois, si on doit garder un historique des tournois) 
+    # players_table.truncate() 
+    # # # Enregistrer les joueurs sérialisés dans la bdd : 
+    # players_table.insert_multiple(serialized_players) 
+
+
 
