@@ -3,9 +3,17 @@
 
 
 from Controllers.player_controller import Player_controller 
+<<<<<<< Updated upstream
 from Models.player_model import Player 
 from Views.dashboard_view import Dashboard_view 
 from Views.get_player_view import Get_player_view 
+=======
+# from Controllers.match_controller import Match_controller 
+# from Models.player_model import Player 
+# from Models.match_model import Match 
+# from Views.dashboard_view import Dashboard_view 
+# from Views.get_player_view import Get_player_view 
+>>>>>>> Stashed changes
 
 # player test 
 # from test.player_test import Get_player_data 
@@ -29,8 +37,13 @@ session = PromptSession()
 
 if __name__ == "__main__": 
 
+<<<<<<< Updated upstream
     # dashboard 
     # welcome = Dashboard_view.welcome_view(Dashboard_view) 
+=======
+    Player_controller.start() 
+    # Match_controller.start() 
+>>>>>>> Stashed changes
     
     """ Ici ou dans la view ? """ 
     # # Choix test ou pas : 

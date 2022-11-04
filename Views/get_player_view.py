@@ -34,37 +34,22 @@ class Get_player_view():
 
         while players_to_register > 0: 
             with open("./utils/players_data.txt", "r") as file: 
+                # for line in file:  # sélectionne le contenu de la ligne, pas son index 
                 lines = file.readlines() 
-                # print(f'lines : {lines}') 
                 for d in range(players_to_register): 
-                    # print(f'd : {d}') 
                     start = d*5 
-                    # print(f'start : {start}') 
                     end = start+5 
-                    # print(f'end : {end}') 
                     step = 5 
                     for i in range(start, end, step): 
                         x = i 
-                        # print(f'x : {x}') 
                         data_sets = lines[x:x+step] 
-                        # print(f'data_sets : {data_sets}') 
-
-                        # print(f'ligne : 0') 
+                        
                         ask_for_lastname = data_sets[0] 
-                        # print(f'ask_for_lastname : {ask_for_lastname}') 
-                        # print(f'ligne : 1') 
                         ask_for_firstname = data_sets[1] 
-                        # print(f'ask_for_firstname : {ask_for_firstname}') 
-                        # print(f'ligne : 2') 
                         ask_for_birthdate = data_sets[2] 
-                        # print(f'ask_for_birthdate : {ask_for_birthdate}') 
-                        # print(f'ligne : 3') 
                         ask_for_genre = data_sets[3] 
-                        # print(f'ask_for_genre : {ask_for_genre}') 
-                        # print(f'ligne : 4') 
                         ask_for_classement = data_sets[4] 
-                        # print(f'ask_for_classement : {ask_for_classement}') 
-                    
+                        
                         # Data for one player 
                         player_data = { 
                             'lastname': ask_for_lastname, 
@@ -79,6 +64,7 @@ class Get_player_view():
                         formated_player_data = Get_player_view.formate_data(player_data) 
                         
                         # print(f'formated_players V80 : {formated_players}') 
+                        # formated_players.append(formated_player_data.copy()) 
                         formated_players.append(formated_player_data) 
                         # print(f'formated_players V82 : {formated_players}') 
 
