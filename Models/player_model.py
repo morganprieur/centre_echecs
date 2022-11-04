@@ -3,9 +3,9 @@
 
 
 # TinyDB 
-# from tinydb import TinyDB
-# db = TinyDB('db.json') 
-# players_table = db.table('players') 
+from tinydb import TinyDB
+db = TinyDB('db.json') 
+players_table = db.table('players') 
 
 
 class Player(): 
@@ -20,17 +20,15 @@ class Player():
 
     def __str__(self): 
         born = '' 
-        if self.genre == 'M': 
+        if self.genre == 'M \n': 
             born = 'né'
-        elif self.genre == 'F': 
+        elif self.genre == 'F \n': 
             born = 'née' 
-        elif self.genre == 'A': 
+        elif self.genre == 'A \n': 
             born = 'né.e' 
         return f'{self.firstname} {self.lastname} {born} on {self.birthdate}, place: {self.classement}.' 
 
 
-<<<<<<< Updated upstream
-=======
     def instantiate_players(formated_players): 
         """ Instantiate the players in a list of object Players. 
         Args:
@@ -101,6 +99,5 @@ class Player():
     # players_table.truncate() 
     # # # Enregistrer les joueurs sérialisés dans la bdd : 
     # players_table.insert_multiple(serialized_players)   # <-- ? serialized_players ? 
->>>>>>> Stashed changes
 
 

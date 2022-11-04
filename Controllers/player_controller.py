@@ -16,33 +16,27 @@ players_table = db.table('players')
 
 class Player_controller(): 
 
-    def instantiate_players(formated_players): 
-        """ Instantiate the players in a list of object Players. 
-        Args:
-            formated_players (list): the list of the players formated data 
-        Returns:
-            players (list): the players in form of object Player 
-        """ 
-        # Liste pour les joueurs objets 
-        players = [] 
 
-        print(f'formated_players ln C23 : {formated_players}')  # inversés 
 
     def start(): 
-        # players 
         print('start') 
+        # players 
         # formated_players = Get_player_view.get_many_players() 
         # players = Player.instantiate_players(formated_players) 
         # serialized_players = Player.serialize_multi_players(players) 
 
+        # matches
         # match_y = Match.instantiate_match() 
-
+        p_table_class = Player_controller.sort_players_by_classement() 
+        half_1, half_2 = Player_controller.separate_players_in_2_halfs(p_table_class) 
+        matches = Player_controller.associate_players_for_round_1(half_1, half_2) 
+        matches_obj = Player_controller.instantiate_matches(matches) 
 
     # Associer les joueurs pour chaque match du tour 1 
-    def trier_joueurs_par_classement(Player): 
+    def sort_players_by_classement():   # Player 
         # trier les joueurs par classement 
-        # p_table = players_table.all() 
-        # print(p_table) 
+        p_table = players_table.all() 
+        # print(f'p_table C36 : {p_table}') 
     # [
     #     {
     #         'lastname': 'Nom01 \n', 
@@ -57,107 +51,115 @@ class Player_controller():
     #         'birthdate': '2002-10-31 \n', 
     #         'genre': 'F \n', 
     #         'classement': '40 \n'
-    #     }
+    #     } 
+    #       ...
     # ] 
-        # >>> Fruit = Query()
-        # >>> db.search(Fruit.type == 'peach')
-        # [{'count': 3, 'type': 'peach'}]
-        # >>> db.search(Fruit.count > 5)
-        # [{'count': 7, 'type': 'apple'}] 
-        # Query().field == 2
-        pl = Query() 
-        pl_40 = players_table.search(pl.classement == '40 \n') 
-        print(f'pl_40 : {pl_40}')  
-        # dic = {} 
-        # lst =[] 
-        # for i in range(len(p_table)): 
-        #     print(i) 
-        #     print(p_table[i]) 
-        #     dic[i] = p_table[i] 
-        # print(f'dic : {dic}') 
-            # print(type(i)) 
-            # for a,b in list(i.items()): 
-            #     print(b,a) 
-            #     lst.append((b,a)) 
-            # lst.append(i) 
-        # print(dic.items()) 
-        # print(f'lst : {lst}') 
-        # for a,b,c,d,e in list(p_table.items()): 
-        #     list.append(e,a,b,c,d) 
-        # lst.sort() 
-        # print(lst) 
-        # for d in dic: 
-        #     print(d[6]) 
 
-    trier_joueurs_par_classement(Player) 
-    
-    def separer_joueurs_en_moities(): 
+        # 1 a = {"key1": 5 , "key2": 8, "key3": 2}
+        # 2 b = {"key1": 7 , "key2": 4, "key3": 9}
+        # 3 c = {"key1": 6 , "key2": 1, "key3": 1}
+        # 4 undecorated = [a, b, c] # how do you sort this list?
+        # 1 sort_on = "key2"
+        # 2 decorated = [(dict_[sort_on], dict_) for dict_ in undecorated]
+        # 3 decorated.sort()
+        # 4 result = [dict_ for (key, dict_) in decorated] 
+        sort_on = 'classement' 
+        decorated = [(dict_[sort_on], dict_) for dict_ in p_table] 
+        decorated.sort() 
+        result = [dict_ for (key, dict_) in decorated] 
+        # print(f'result C70 : {result}') 
+
+        return result 
+    # sort_players_by_classement(Player) 
+
+    # def get_players_ids(p_table_class): 
+    def separate_players_in_2_halfs(p_table_class): 
         # séparer les joueurs en 2 moitiés 
-        pass 
+        half_1 = [] 
+        half_2 = [] 
+        # Item = Query()
+        # p_table_class = db.search(Item['lastname'] == .) 
+        p_table = players_table.all() 
+        for i in range(len(p_table_class)): 
+            # print(f'p_table_class[i].doc_id C87 : {p_table_class[i].doc_id}') 
+            print(f'p_table_class[i] C88 : {p_table_class[i]}') 
+            if i < len(p_table_class)/2: 
+                print(i) 
+                half_1.append(p_table_class[i]) 
+            if len(p_table_class)/2 <= i: 
+                print(i) 
+                half_2.append(p_table_class[i]) 
+        print(f'half_1 C95 : {half_1}') 
+        print(f'half_2 C96 : {half_2}') 
 
-    def associer_joueurs_tour_1(): 
+        return half_1, half_2 
+
+        # utiliser l'id des joueurs 
+        # créer tuples (player_id, score=0) pour chaque joueur 
+
+    def associate_players_for_round_1(half_1, half_2): 
         # associer chaque rang de chaque moitié 
-        pass 
-        
+        print(f'half_1 : {half_1}') 
+        print(f'half_2 : {half_2}') 
+        # for i in half_1: 
+        for i in range(len(half_1)): 
+            print(f'half_1[i].doc_id C108 : {half_1[i].doc_id}') 
+        for i in range(len(half_2)): 
+            print(f'half_2[i].doc_id C111 : {half_2[i].doc_id}') 
+        tuples = [] 
+        tuple_1 = (half_1[0].doc_id, 0) 
+        tuple_2 = (half_1[1].doc_id, 0) 
+        tuple_3 = (half_1[2].doc_id, 0) 
+        tuple_4 = (half_1[3].doc_id, 0) 
+        tuple_5 = (half_2[0].doc_id, 0) 
+        tuple_6 = (half_2[1].doc_id, 0) 
+        tuple_7 = (half_2[2].doc_id, 0) 
+        tuple_8 = (half_2[3].doc_id, 0) 
+        tuples.append(tuple_1) 
+        tuples.append(tuple_2) 
+        tuples.append(tuple_3) 
+        tuples.append(tuple_4) 
+        tuples.append(tuple_5) 
+        tuples.append(tuple_6) 
+        tuples.append(tuple_7) 
+        tuples.append(tuple_8) 
+        print(f'tuples : {tuples}') 
 
-    # def instantiate_players(formated_players): 
-    #     """ Instantiate the players in a list of object Players. 
-    #     Args:
-    #         formated_players (list): the list of the players formated data 
-    #     Returns:
-    #         players (list): the players in form of object Player 
-    #     """ 
-    #     # Liste pour les joueurs objets 
-    #     players = [] 
+        # associer les tuples 
+        match_1 = [] 
+        match_2 = [] 
+        match_3 = [] 
+        match_4 = [] 
+        match_1.append(tuple_1) 
+        match_1.append(tuple_2) 
+        match_2.append(tuple_3) 
+        match_2.append(tuple_4) 
+        match_3.append(tuple_5) 
+        match_3.append(tuple_6) 
+        match_4.append(tuple_7) 
+        match_4.append(tuple_8) 
 
-    #     print(f'formated_players ln C23 : {formated_players}')  # inversés 
+        print(f'match_1 : {match_1}') 
+        print(f'match_2 : {match_2}') 
+        print(f'match_3 : {match_3}') 
+        print(f'match_4 : {match_4}') 
 
-    #     for data_dict in range(len(formated_players)): 
-    #         player_x = Player( 
-    #             lastname=formated_players[data_dict]['lastname'], 
-    #             firstname=formated_players[data_dict]['firstname'], 
-    #             birthdate=formated_players[data_dict]['birthdate'], 
-    #             genre=formated_players[data_dict]['genre'], 
-    #             classement=formated_players[data_dict]['classement']
-    #         ) 
-    #         print(f'player_x ln C34 :  {player_x}') 
+        matches = [] 
+        matches.append(match_1) 
+        matches.append(match_2) 
+        matches.append(match_3) 
+        matches.append(match_4) 
 
-    #         players.append(player_x) 
-
-    #     print(f'players ln C38 :  {players}') 
-    #     print(f'players ln C38 :  {players[0].lastname}')  # inversés 
-        
-        return players 
+        return matches 
 
 
-    def serialize_multi_players(players): 
-        """ Serialization of the players data in order to register them 
-            in the DB. 
-        Args:
-            players (list): list of object Players 
-        Returns:
-            serialized_players (list): the players in the expected format for the DB 
-        """
-        serialized_players = [] 
-
-        # print(f'players C48 : {players}')   # inversés 
-        # print(f'players C48 : {players[0].lastname}') 
-        for p_obj in range(len(players)): 
-            # print(f'type(p_obj) : {type(p_obj)}\n') 
-            # print(f'p_obj : {p_obj}\n') 
-            # print(f'players[{p_obj}] : {players[p_obj]}\n') 
-            serialized_player_data = {
-                'lastname': players[p_obj].lastname, 
-                'firstname': players[p_obj].firstname, 
-                'birthdate': players[p_obj].birthdate, 
-                'genre': players[p_obj].genre, 
-                'classement': players[p_obj].classement 
-            } 
-
-            serialized_players.append(serialized_player_data) 
-
-        print(f'serialized_players C69 : {serialized_players}')  # inversés 
-
-        return serialized_players 
-
+    def instantiate_matches(matches): 
+        # instancier les matches 
+        matches_obj = [] 
+        for m in range(len(matches)): 
+            match_y = Match( 
+                tuple_match=matches[m] 
+            ) 
+            matches_obj.append(match_y) 
+        print(f'matches_obj : {matches_obj}')  
 
