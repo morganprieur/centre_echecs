@@ -26,11 +26,12 @@ class Player_controller():
         # serialized_players = Player.serialize_multi_players(players) 
 
         # matches
-        # match_y = Match.instantiate_match() 
+        ## round 1 
         p_table_class = Player_controller.sort_players_by_classement() 
         half_1, half_2 = Player_controller.separate_players_in_2_halfs(p_table_class) 
         matches = Player_controller.associate_players_for_round_1(half_1, half_2) 
-        matches_obj = Player_controller.instantiate_matches(matches) 
+        # matches_obj = Player_controller.instantiate_matches(matches) 
+        matches_obj = Match.instantiate_matches(matches) 
 
     # Associer les joueurs pour chaque match du tour 1 
     def sort_players_by_classement():   # Player 
@@ -70,7 +71,6 @@ class Player_controller():
         # print(f'result C70 : {result}') 
 
         return result 
-    # sort_players_by_classement(Player) 
 
     # def get_players_ids(p_table_class): 
     def separate_players_in_2_halfs(p_table_class): 
@@ -102,11 +102,14 @@ class Player_controller():
         print(f'half_1 : {half_1}') 
         print(f'half_2 : {half_2}') 
         # for i in half_1: 
+        tuples = [] 
         for i in range(len(half_1)): 
             print(f'half_1[i].doc_id C108 : {half_1[i].doc_id}') 
+            # tuple_{i} = (half_1[0].doc_id, 0)  # dict + index 
         for i in range(len(half_2)): 
             print(f'half_2[i].doc_id C111 : {half_2[i].doc_id}') 
-        tuples = [] 
+            
+            # eval(f"tuple_{i} = ({half_1[i].doc_id}, 0)") 
         tuple_1 = (half_1[0].doc_id, 0) 
         tuple_2 = (half_1[1].doc_id, 0) 
         tuple_3 = (half_1[2].doc_id, 0) 
@@ -153,13 +156,13 @@ class Player_controller():
         return matches 
 
 
-    def instantiate_matches(matches): 
-        # instancier les matches 
-        matches_obj = [] 
-        for m in range(len(matches)): 
-            match_y = Match( 
-                tuple_match=matches[m] 
-            ) 
-            matches_obj.append(match_y) 
-        print(f'matches_obj : {matches_obj}')  
+    # def instantiate_matches(matches): 
+    #     # instancier les matches 
+    #     matches_obj = [] 
+    #     for m in range(len(matches)): 
+    #         match_y = Match( 
+    #             tuple_match=matches[m] 
+    #         ) 
+    #         matches_obj.append(match_y) 
+    #     print(f'matches_obj : {matches_obj}')  
 
