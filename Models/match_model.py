@@ -30,7 +30,8 @@ class Match():
             match_y = Match( 
                 tuple_match=matches[m] 
             ) 
+            # print(f'match M33 : {match_y}')     
             matches_obj.append(match_y) 
-        print(f'matches_obj : {matches_obj}')  
+        print(f'matches_obj M35 : {matches_obj}')  
 
 

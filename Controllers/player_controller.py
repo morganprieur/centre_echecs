@@ -19,14 +19,13 @@ class Player_controller():
 
 
     def start(): 
-        print('start') 
-        # players 
-        # formated_players = Get_player_view.get_many_players() 
-        # players = Player.instantiate_players(formated_players) 
-        # serialized_players = Player.serialize_multi_players(players) 
+        print('start for round 1') 
+        matches = Player_controller.define_matches_round_one() 
 
         # matches
         ## round 1 
+    
+    def define_matches_round_one(): 
         p_table_class = Player_controller.sort_players_by_classement() 
         half_1, half_2 = Player_controller.separate_players_in_2_halfs(p_table_class) 
         matches = Player_controller.associate_players_for_round_1(half_1, half_2) 
@@ -82,15 +81,15 @@ class Player_controller():
         p_table = players_table.all() 
         for i in range(len(p_table_class)): 
             # print(f'p_table_class[i].doc_id C87 : {p_table_class[i].doc_id}') 
-            print(f'p_table_class[i] C88 : {p_table_class[i]}') 
+            # print(f'p_table_class[i] C88 : {p_table_class[i]}') 
             if i < len(p_table_class)/2: 
-                print(i) 
+                # print(i) 
                 half_1.append(p_table_class[i]) 
             if len(p_table_class)/2 <= i: 
-                print(i) 
+                # print(i) 
                 half_2.append(p_table_class[i]) 
-        print(f'half_1 C95 : {half_1}') 
-        print(f'half_2 C96 : {half_2}') 
+        # print(f'half_1 C95 : {half_1}') 
+        # print(f'half_2 C96 : {half_2}') 
 
         return half_1, half_2 
 
@@ -99,70 +98,43 @@ class Player_controller():
 
     def associate_players_for_round_1(half_1, half_2): 
         # associer chaque rang de chaque moitié 
-        print(f'half_1 : {half_1}') 
-        print(f'half_2 : {half_2}') 
-        # for i in half_1: 
+        # print(f'half_1 : {half_1}') 
+        # print(f'half_2 : {half_2}') 
+        
         tuples = [] 
         for i in range(len(half_1)): 
-            print(f'half_1[i].doc_id C108 : {half_1[i].doc_id}') 
-            # tuple_{i} = (half_1[0].doc_id, 0)  # dict + index 
+            # print(f'half_1[i].doc_id C108 : {half_1[i].doc_id}') 
+            tuples.append((half_1[i].doc_id, 0)) 
         for i in range(len(half_2)): 
-            print(f'half_2[i].doc_id C111 : {half_2[i].doc_id}') 
-            
-            # eval(f"tuple_{i} = ({half_1[i].doc_id}, 0)") 
-        tuple_1 = (half_1[0].doc_id, 0) 
-        tuple_2 = (half_1[1].doc_id, 0) 
-        tuple_3 = (half_1[2].doc_id, 0) 
-        tuple_4 = (half_1[3].doc_id, 0) 
-        tuple_5 = (half_2[0].doc_id, 0) 
-        tuple_6 = (half_2[1].doc_id, 0) 
-        tuple_7 = (half_2[2].doc_id, 0) 
-        tuple_8 = (half_2[3].doc_id, 0) 
-        tuples.append(tuple_1) 
-        tuples.append(tuple_2) 
-        tuples.append(tuple_3) 
-        tuples.append(tuple_4) 
-        tuples.append(tuple_5) 
-        tuples.append(tuple_6) 
-        tuples.append(tuple_7) 
-        tuples.append(tuple_8) 
+            # print(f'half_2[i].doc_id C111 : {half_2[i].doc_id}') 
+            tuples.append((half_2[i].doc_id, 0)) 
+            # eval(f"tuple_{i}") = ({half_1[i].doc_id}, 0) 
         print(f'tuples : {tuples}') 
+        # print(f'len(tuples) : {len(tuples)}') 
 
-        # associer les tuples 
+        # associer les tuples dans les matches 
+        matches = [] 
         match_1 = [] 
         match_2 = [] 
         match_3 = [] 
         match_4 = [] 
-        match_1.append(tuple_1) 
-        match_1.append(tuple_2) 
-        match_2.append(tuple_3) 
-        match_2.append(tuple_4) 
-        match_3.append(tuple_5) 
-        match_3.append(tuple_6) 
-        match_4.append(tuple_7) 
-        match_4.append(tuple_8) 
-
-        print(f'match_1 : {match_1}') 
-        print(f'match_2 : {match_2}') 
-        print(f'match_3 : {match_3}') 
-        print(f'match_4 : {match_4}') 
-
-        matches = [] 
+        for m in range(len(tuples)-6): 
+            match_1.append(tuples[m]) 
+        for m in range(2, len(tuples)-4): 
+            match_2.append(tuples[m]) 
+        for m in range(4, len(tuples)-2): 
+            match_3.append(tuples[m]) 
+        for m in range(6, len(tuples)): 
+            match_4.append(tuples[m]) 
         matches.append(match_1) 
         matches.append(match_2) 
         matches.append(match_3) 
         matches.append(match_4) 
+        print(f'match_1 : {match_1}') 
+        print(f'match_1 : {match_1}') 
+        print(f'matches : {matches}') 
 
         return matches 
 
 
-    # def instantiate_matches(matches): 
-    #     # instancier les matches 
-    #     matches_obj = [] 
-    #     for m in range(len(matches)): 
-    #         match_y = Match( 
-    #             tuple_match=matches[m] 
-    #         ) 
-    #         matches_obj.append(match_y) 
-    #     print(f'matches_obj : {matches_obj}')  
 
