@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     # dashboard 
     # welcome = Dashboard_view.welcome_view(Dashboard_view) 
-    Player_controller.define_matches_round_one() 
+    Player_controller.start() 
     # p_table_class = Player_controller.sort_players_by_classement()  # Player 
     # players_ids = Player_controller.get_players_ids(p_table_class) 
 
