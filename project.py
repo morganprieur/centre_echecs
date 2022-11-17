@@ -3,6 +3,7 @@
 
 
 from Controllers.player_controller import Player_controller 
+from Controllers.match_controller import Match_controller 
 from Models.match_model import Match 
 from Models.player_model import Player 
 from Views.dashboard_view import Dashboard_view 
@@ -33,15 +34,10 @@ if __name__ == "__main__":
     # dashboard 
     # welcome = Dashboard_view.welcome_view(Dashboard_view) 
     Player_controller.start() 
+    Match_controller.start() 
     # p_table_class = Player_controller.sort_players_by_classement()  # Player 
     # players_ids = Player_controller.get_players_ids(p_table_class) 
 
-    # # players 
-    # formated_players = Get_player_view.get_many_players() 
-    # players = Player_controller.instantiate_players(formated_players) 
-    # serialized_players = Player_controller.serialize_multi_players(players) 
-    # print(f'serialized_players[0]["lastname"] ln51 : {serialized_players[0]["lastname"]}') 
-    # print(f'serialized_players[1]["lastname"] ln51 : {serialized_players[1]["lastname"]}') 
     
     
 

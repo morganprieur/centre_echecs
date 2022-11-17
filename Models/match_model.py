@@ -60,7 +60,7 @@ class Match():
         """
         serialized_matches_start = [] 
 
-        print(f'matches_obj_start M63 : {matches_obj_start}') 
+        # print(f'matches_obj_start M63 : {matches_obj_start}') 
         for m_obj in range(len(matches_obj_start)): 
             # print(f'type(p_obj) : {type(p_obj)}\n') 
             # print(f'p_obj : {p_obj}\n') 
