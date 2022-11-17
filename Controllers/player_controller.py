@@ -2,9 +2,10 @@
 
 
 
-from Views.get_player_view import Get_player_view 
 from Models.match_model import Match 
 from Models.player_model import Player 
+from Views.get_match_view import Get_match_view 
+from Views.get_player_view import Get_player_view 
 
 import re 
 
@@ -20,17 +21,27 @@ class Player_controller():
 
     def start(): 
         print('start for round 1') 
-        matches = Player_controller.define_matches_round_one() 
+        matches_0_start = Player_controller.matches_start() 
+        # print(f'matches_0_start C26 : {matches_0_start}')  # = M49 
+        matches_1_start = Player_controller.matches_round_1(matches_0_start) 
 
-        # matches
-        ## round 1 
     
-    def define_matches_round_one(): 
+    # matches
+    def matches_start(): 
         p_table_class = Player_controller.sort_players_by_classement() 
         half_1, half_2 = Player_controller.separate_players_in_2_halfs(p_table_class) 
-        matches = Player_controller.associate_players_for_round_1(half_1, half_2) 
-        # matches_obj = Player_controller.instantiate_matches(matches) 
-        matches_obj = Match.instantiate_matches(matches) 
+        matches_start = Player_controller.associate_players_for_round_1(half_1, half_2) 
+        matches_obj_start = Match.instantiate_matches(matches_start) 
+        serialized_matches_start = Match.serialize_multi_matches(matches_obj_start) 
+        return matches_obj_start 
+        
+
+    ## round 1 
+    def matches_round_1(matches_obj_start): 
+        score_player_1_start = Get_match_view.register_scores_round_1(matches_obj_start) 
+        print(f'score_player_1_round_1 C36 : {score_player_1_start}') 
+        scores_round_1_obj = Match.instantiate_scores_round_1(score_player_1_start) 
+
 
     # Associer les joueurs pour chaque match du tour 1 
     def sort_players_by_classement():   # Player 
@@ -113,7 +124,7 @@ class Player_controller():
         # print(f'len(tuples) : {len(tuples)}') 
 
         # associer les tuples dans les matches 
-        matches = [] 
+        matches_1 = [] 
         match_1 = [] 
         match_2 = [] 
         match_3 = [] 
@@ -126,15 +137,15 @@ class Player_controller():
             match_3.append(tuples[m]) 
         for m in range(6, len(tuples)): 
             match_4.append(tuples[m]) 
-        matches.append(match_1) 
-        matches.append(match_2) 
-        matches.append(match_3) 
-        matches.append(match_4) 
+        matches_1.append(match_1) 
+        matches_1.append(match_2) 
+        matches_1.append(match_3) 
+        matches_1.append(match_4) 
         print(f'match_1 : {match_1}') 
-        print(f'match_1 : {match_1}') 
-        print(f'matches : {matches}') 
+        print(f'match_2 : {match_2}') 
+        print(f'matches_1 : {matches_1}') 
 
-        return matches 
-
+        return matches_1 
+    
 
 

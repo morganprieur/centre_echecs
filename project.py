@@ -3,9 +3,11 @@
 
 
 from Controllers.player_controller import Player_controller 
+from Models.match_model import Match 
 from Models.player_model import Player 
 from Views.dashboard_view import Dashboard_view 
-from Views.get_player_view import Get_player_view 
+# from Views.get_player_view import Get_player_view 
+# from Views.get_match_view import Get_match_view 
 
 # player test 
 # from test.player_test import Get_player_data 
@@ -41,6 +43,10 @@ if __name__ == "__main__":
     # print(f'serialized_players[0]["lastname"] ln51 : {serialized_players[0]["lastname"]}') 
     # print(f'serialized_players[1]["lastname"] ln51 : {serialized_players[1]["lastname"]}') 
     
+    
+
+
+
     ### A mettre dans le model 
     # Vider la BDD avant d'enregistrer les nouveaux joueurs 
     # (ne pas le faire pour les tournois, si on doit garder un historique des tournois) 
