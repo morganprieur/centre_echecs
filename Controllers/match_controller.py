@@ -12,16 +12,25 @@ players_table = db.table('players')
 
 class Match_controller(): 
 
+    matches_start = [[(8, 0), (6, 0)], [(5, 0), (2, 0)], [(4, 0), (1, 0)], [(3, 0), (7, 0)]] 
+    matches_obj_start = Match.instantiate_matches(matches_start) 
+
+    def __init__(self, matches_start, matches_obj_start): 
+        self.matches_start = matches_start 
+        self.matches_obj_start = matches_obj_start 
+        self.start() 
+
+
     def start(): 
         print('start matches') 
     
-        matches_0_start = Match_controller.matches_start() 
+        matches_0_start = Match_controller.start_matches() 
         # print(f'matches_0_start C26 : {matches_0_start}')  # = M49 
-        matches_1_start = Match_controller.matches_round_1(matches_0_start) 
+        matches_round_1_start = Match_controller.matches_round_1(matches_0_start) 
 
     
     # matches
-    def matches_start(): 
+    def start_matches(): 
         # p_table_class = Match_controller.sort_players_by_classement() 
         # half_1, half_2 = Match_controller.separate_players_in_2_halfs(p_table_class) 
         # matches_start = Match_controller.associate_players_for_round_1(half_1, half_2) 

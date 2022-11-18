@@ -85,7 +85,7 @@ class Player():
 
             serialized_players.append(serialized_player_data) 
 
-        print(f'serialized_players M88 : {serialized_players}') 
+        # print(f'serialized_players M88 : {serialized_players}')     # ok 
 
         players_table.truncate() 
         # # Enregistrer les joueurs sérialisés dans la bdd : 
