@@ -47,8 +47,8 @@ class Persist_entity():
         return serialized_objects 
 
     # classes filles 
-    # ->  class Player(persistence) 
-    # ->  class match(persistence) 
+    # ->  class Player(Persist_entity) 
+    # ->  class match(Persist_entity) 
     # ->  ... 
 
 

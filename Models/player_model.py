@@ -1,6 +1,7 @@
 
 
 
+from Models.abstract_model_classes import Persist_entity 
 
 # TinyDB 
 from tinydb import TinyDB
@@ -8,6 +9,7 @@ db = TinyDB('db.json')
 players_table = db.table('players') 
 
 
+# class Player(Persist_entity): 
 class Player(): 
 
     def __init__(self, lastname, firstname, birthdate, genre, classement): 
