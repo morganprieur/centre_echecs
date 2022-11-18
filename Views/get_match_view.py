@@ -10,7 +10,7 @@ import re
 class Get_match_view(): 
 
     
-    def register_scores_round_1(matches_obj_1): 
+    def get_scores_round_1(matches_obj_1): 
         # créer des dicts pour stocker les joueurs, leur score et les joueurs contre qui ils ont déjà joué 
         # créer une liste pour stocker les dicts 
         # récupérer les scores des joueurs (input) 
@@ -37,6 +37,7 @@ class Get_match_view():
         # scores_round_1.append(player_7_round_1) 
         # scores_round_1.append(player_8_round_1) 
 
+        # Récupérer et traiter les données du joueur 1 : 
         player_1_round_1 = {} 
         # ask for player's end of match 
         # ask_for_player_s_id = session.prompt(
@@ -58,6 +59,8 @@ class Get_match_view():
         print(f'player_1_round_1 V58 : {player_1_round_1}')  
 
         return player_1_round_1 
+
+        # Vérifier les données 
 
 
 

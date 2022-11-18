@@ -45,7 +45,7 @@ class Match():
             # print(f'match M45 : {match_y}') 
 
             matches_obj_start.append(match_y) 
-        print(f'matches_obj_start M47 : {matches_obj_start}') 
+        # print(f'matches_obj_start M47 : {matches_obj_start}') 
 
         return matches_obj_start 
     
@@ -80,6 +80,7 @@ class Match():
         return serialized_matches_start 
 
 
+    # resultats matches round 1 
     def instantiate_scores_round_1(score_player_1_round_1): 
         print(f'scores_round_1 M40 : {score_player_1_round_1}')  
 

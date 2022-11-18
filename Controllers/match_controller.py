@@ -22,18 +22,25 @@ class Match_controller():
     
     # matches
     def matches_start(): 
-        p_table_class = Match_controller.sort_players_by_classement() 
-        half_1, half_2 = Match_controller.separate_players_in_2_halfs(p_table_class) 
-        matches_start = Match_controller.associate_players_for_round_1(half_1, half_2) 
+        # p_table_class = Match_controller.sort_players_by_classement() 
+        # half_1, half_2 = Match_controller.separate_players_in_2_halfs(p_table_class) 
+        # matches_start = Match_controller.associate_players_for_round_1(half_1, half_2) 
+        # Return objects to reuse them without reoperate the match's start (only for dev) 
+        matches_start = [[(8, 0), (6, 0)], [(5, 0), (2, 0)], [(4, 0), (1, 0)], [(3, 0), (7, 0)]] 
         matches_obj_start = Match.instantiate_matches(matches_start) 
-        serialized_matches_start = Match.serialize_multi_matches(matches_obj_start) 
+        # serialized_matches_start = Match.serialize_multi_matches(matches_obj_start) 
         return matches_obj_start 
         
 
     ## round 1 
     def matches_round_1(matches_obj_start): 
-        score_player_1_start = Get_match_view.register_scores_round_1(matches_obj_start) 
-        print(f'score_player_1_round_1 C36 : {score_player_1_start}') 
+        print(f'matches_obj_start C37 : {matches_obj_start}') 
+        
+        # Vérifier les données (dans la vue) 
+        score_player_1_start = Get_match_view.get_scores_round_1(matches_obj_start) 
+        print(f'score_player_1_round_1 C38 : {score_player_1_start}') 
+
+
 
         # scores_round_1_obj = Match.instantiate_scores_round_1(score_player_1_start) 
 

@@ -118,7 +118,7 @@ class Get_player_view():
 
 
     def formate_data(player_data): 
-        """ Verifies and formate data for the current player, 
+        """ Verifies and formates data for the current player, 
             and adds them at the end of the formated_players list. 
         Args:
             player_data (dictionnary): the raw data, entered by the administrator 

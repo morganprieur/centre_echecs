@@ -1,11 +1,43 @@
 
 
-# import re 
-# # tu use prompt as an instance 
-# from prompt_toolkit import PromptSession 
-# session = PromptSession() 
+
+
+import re 
+# tu use prompt as an instance 
+from prompt_toolkit import PromptSession 
+session = PromptSession() 
 # from datetime import datetime, date 
 
+
+# formate data 
+def format_capitalize(formated_entity_data, raw_data, prop): 
+    formated_entity_data[f'{prop}'] = raw_data[f'{prop}'].capitalize() 
+    return formated_entity_data[f'{prop}'] 
+
+
+def format_date(formated_entity_data, raw_data, pattern, prop): 
+    if re.search(f'{pattern}', raw_data[f'{prop}']): 
+        formated_entity_data[f'{prop}'] = raw_data[f'{prop}'] 
+    else: 
+        formated_entity_data[f'{prop}'] = session.prompt(f'Enter the prop ({pattern}): \n') 
+    return formated_entity_data[f'{prop}'] 
+
+
+list_of_patterns = ['pattern1', 'pattern2', 'pattern3'] 
+def format_condition(formated_entity_data, raw_data, list_of_patterns, prop): 
+    for l in range(len(list_of_patterns)): 
+        if (raw_data['prop'] == list_of_patterns[l]): 
+            formated_entity_data['prop'] = raw_data['prop'] 
+        else: 
+            l += 1 
+            if (raw_data['prop'] == list_of_patterns[l]): 
+                formated_entity_data['prop'] = raw_data['prop'] 
+            else: 
+                formated_entity_data['prop'] = session.prompt( 
+                    f'Lettre non valide : {raw_data["prop"]}Entrer le {prop} parmi "M", "F", "A" (pour "autre") en majuscules : \n'
+                ) 
+        formated_entity_data['prop'] = raw_data['prop'] 
+    return formated_entity_data[f'{prop}'] 
 
 
 
