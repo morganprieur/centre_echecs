@@ -14,9 +14,6 @@ import re
 ### Hypothèse classes mères : ### 
 
 
-
-
-
 # classe mère 
 class Persist_entity(): 
 

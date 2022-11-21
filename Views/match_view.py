@@ -7,7 +7,7 @@ session = PromptSession()
 
 import re 
 
-class Get_match_view(): 
+class Match_view(): 
 
     
     def get_scores_round_1(matches_obj_1): 

@@ -2,7 +2,7 @@
 
 
 from Models.match_model import Match 
-from Views.get_match_view import Get_match_view 
+from Views.match_view import Match_view 
 
 # TinyDB 
 from tinydb import TinyDB, Query 
@@ -46,7 +46,7 @@ class Match_controller():
         print(f'matches_obj_start C37 : {matches_obj_start}') 
         
         # Vérifier les données (dans la vue) 
-        score_player_1_start = Get_match_view.get_scores_round_1(matches_obj_start) 
+        score_player_1_start = Match_view.get_scores_round_1(matches_obj_start) 
         print(f'score_player_1_round_1 C38 : {score_player_1_start}') 
 
 

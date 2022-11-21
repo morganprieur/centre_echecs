@@ -4,7 +4,7 @@
 
 from Models.match_model import Match 
 from Models.player_model import Player 
-from Views.get_match_view import Get_match_view 
+from Views.match_view import Match_view 
 from Views.player_view import Player_view 
 
 import re 
