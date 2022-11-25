@@ -12,6 +12,9 @@ players_table = db.table('players')
 # class Player(Persist_entity): 
 class Player(): 
 
+    players = [] 
+    serialized_players = [] 
+
     def __init__(self, lastname, firstname, birthdate, genre, classement): 
         self.lastname = lastname  
         self.firstname = firstname 
@@ -19,19 +22,18 @@ class Player():
         self.genre = genre 
         self.classement = classement 
 
-
     def __str__(self): 
         born = '' 
-        if self.genre == 'M \n': 
+        if self.genre == 'M\n': 
             born = 'né'
-        elif self.genre == 'F \n': 
+        elif self.genre == 'F\n': 
             born = 'née' 
-        elif self.genre == 'A \n': 
+        elif self.genre == 'A\n': 
             born = 'né.e' 
-        return f'{self.firstname} {self.lastname} {born} on {self.birthdate}, place: {self.classement}.' 
+        return f'{self.firstname} {self.lastname} {born} on {self.birthdate} place: {self.classement}.' 
 
 
-    def instantiate_players(formated_players): 
+    def instantiate_players(formated_players, players): 
         """ Instantiate the players in a list of object Players. 
         Args:
             formated_players (list): the list of the players formated data 
@@ -39,7 +41,7 @@ class Player():
             players (list): the players in form of object Player 
         """ 
         # Liste pour les joueurs objets 
-        players = [] 
+        # players = [] 
 
         print(f'formated_players ln M42 : {formated_players}')  # inversés 
 
@@ -61,7 +63,7 @@ class Player():
         return players 
 
 
-    def serialize_multi_players(players): 
+    def serialize_multi_players(players, serialized_players): 
         """ Serialization of the players data in order to register them 
             in the DB. 
         Args:
@@ -69,7 +71,7 @@ class Player():
         Returns:
             serialized_players (list): the players in the expected format for the DB 
         """
-        serialized_players = [] 
+        # serialized_players = [] 
 
         # print(f'players C48 : {players}')   # inversés 
         # print(f'players C48 : {players[0].lastname}') 
@@ -95,11 +97,11 @@ class Player():
 
         return serialized_players 
 
-    # serialized_players = serialize_multi_players(players=instantiate_players(formated_players)) 
     # Vider la BDD avant d'enregistrer les nouveaux joueurs 
     # (ne pas le faire pour les tournois, si on doit garder un historique des tournois) 
     # players_table.truncate() 
-    # # # Enregistrer les joueurs sérialisés dans la bdd : 
-    # players_table.insert_multiple(serialized_players)   # <-- ? serialized_players ? 
+    # Enregistrer les joueurs sérialisés dans la bdd : 
+    ### à décommenter pour enregistrer dans la DB 
+    # players_table.insert_multiple(serialized_players) 
 
 

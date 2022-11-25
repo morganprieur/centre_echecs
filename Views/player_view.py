@@ -23,8 +23,7 @@ class Player_view():
     formated_players = [] 
     formated_player_data = {} 
 
-
-
+    
     # def __init__(self, formated_players, formated_player_data):     # test_or_not, players_to_register, 
     def __init__(self, test_or_not, players_to_register, formated_players, formated_player_data): 
         self.test_or_not = test_or_not 

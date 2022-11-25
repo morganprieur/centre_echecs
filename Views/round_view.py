@@ -1,22 +1,26 @@
 
 
 
+
+from Models.match_model import Match 
 from prompt_toolkit import PromptSession 
 # to use prompt as an instance 
 session = PromptSession() 
 
 import re 
 
-class Match_view(): 
+class Round_view(): 
 
+    scores_players_round_1 = [] 
+    matches_obj_start = Match.matches_obj_start 
+    # print(f'matches_obj_start RV15 : {Match.matches_obj_start}')  # liste vide 
     
-    def get_scores_round_1(matches_obj_1): 
+    def get_scores_round_1(players_round_1):  # matches_obj_1 
         # créer des dicts pour stocker les joueurs, leur score et les joueurs contre qui ils ont déjà joué 
         # créer une liste pour stocker les dicts 
         # récupérer les scores des joueurs (input) 
         # les enregistrer dans les tuples 
 
-        # print(f'matches_obj_1 V19 : {matches_obj_1}') 
 
         # scores_round_1 = [] 
         # player_1_round_1 = {} 
@@ -38,7 +42,8 @@ class Match_view():
         # scores_round_1.append(player_8_round_1) 
 
         # Récupérer et traiter les données du joueur 1 : 
-        player_1_round_1 = {} 
+        # players_round_1 = [] 
+        score_player_1_round_1 = {} 
         # ask for player's end of match 
         # ask_for_player_s_id = session.prompt(
         #     'Entrer l\'id du joueur : \n' 
@@ -49,16 +54,19 @@ class Match_view():
         ask_for_player_s_score_round_1 = session.prompt(
             'Entrer le score du joueur pour le round 1 : \n' 
         ) 
-        player_1_round_1['adversary'] = ask_for_player_s_adversary 
-        player_1_round_1['score'] = ask_for_player_s_score_round_1 
-
+        score_player_1_round_1['player'] = 1 
+        score_player_1_round_1['adversary'] = ask_for_player_s_adversary 
+        score_player_1_round_1['score'] = ask_for_player_s_score_round_1 
 
         # if ask_for_player_s_id == 1: 
         #     player_1_round_1['adversary'] = ask_for_player_s_adversary 
         #     player_1_round_1['score'] = ask_for_player_s_score_round_1 
-        print(f'player_1_round_1 V58 : {player_1_round_1}')  
+        print(f'score_player_1_round_1 RV63 : {score_player_1_round_1}') 
+        print(f'type(score_player_1_round_1) RV64 : {type(score_player_1_round_1)}') 
 
-        return player_1_round_1 
+        Round_view.scores_players_round_1.append(score_player_1_round_1) 
+
+        return Round_view.scores_players_round_1 
 
         # Vérifier les données 
 

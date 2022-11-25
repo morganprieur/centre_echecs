@@ -4,7 +4,7 @@
 
 from Models.match_model import Match 
 from Models.player_model import Player 
-from Views.match_view import Match_view 
+from Views.round_view import Round_view 
 from Views.player_view import Player_view 
 
 import re 
@@ -21,11 +21,18 @@ class Player_controller():
 
     #     self.start() 
 
+    ### possible ou pas ? comment faire ? ### 
+    # players_to_register = int 
+    # test_or_not = str 
+    # formated_player_data = dict 
+    # formated_player = list 
+
+    # players = Player.players 
 
     def start(): 
-        print('[Player_controller] start for round 1') 
+        print('[Player_controller] start') 
 
-        # # players  --> à vérifier 
+        # # players  --> à vérifier ### 
         init_players = Player_view( 
             players_to_register=Player_view.players_to_register, 
             test_or_not=Player_view.test_or_not, 
@@ -33,25 +40,14 @@ class Player_controller():
             formated_players=Player_view.formated_players 
         ) 
         print(f'init_players C35 : {init_players}') 
-        print(f'init_players.formated_players C36 : {init_players.formated_players}') 
-        print(f'init_players.formated_players C37 : {init_players.players_to_register}') 
-        print(f'init_players.formated_players C38 : {init_players.test_or_not}') 
+        
+        Player.instantiate_players(init_players.formated_players, Player.players) 
+        # print(f'players PC53 : {Player.players}')  # ok 
 
-        # formated_players = Player_view.get_players(init_players) 
-        # print(f'formated_players C40 : {formated_players}') 
-
-        players = Player.instantiate_players(init_players.formated_players) 
-        # print(f'players C41 : {players}')   # ok 
-
-        serialized_players = Player.serialize_multi_players(players) 
-        # print(f'serialized_players C44 : {serialized_players}')     # ok 
+        Player.serialize_multi_players(Player.players, Player.serialized_players) 
+        # print(f'serialized_players PC57 : {Player.serialized_players}')     # ok 
 
         # print(f'serialized_players[0]["lastname"] ln51 : {serialized_players[0]["lastname"]}') 
         # print(f'serialized_players[1]["lastname"] ln51 : {serialized_players[1]["lastname"]}') 
 
     
-
-
-
-
-

@@ -2,8 +2,9 @@
 
 
 
-from Controllers.player_controller import Player_controller 
 from Controllers.match_controller import Match_controller 
+from Controllers.player_controller import Player_controller 
+from Controllers.round_controller import Round_controller 
 from Models.match_model import Match 
 from Models.player_model import Player 
 from Views.dashboard_view import Dashboard_view 
@@ -45,7 +46,8 @@ if __name__ == "__main__":
     # welcome = Dashboard_view.welcome_view(Dashboard_view) 
     
     # Player_controller.start() 
-    # Match_controller.start() 
+    Match_controller.start_matches() 
+    Round_controller.start_round_1() 
     
     # p_table_class = Player_controller.sort_players_by_classement()  # Player 
     # players_ids = Player_controller.get_players_ids(p_table_class) 
