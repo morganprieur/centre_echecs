@@ -57,8 +57,8 @@ class Player():
 
             players.append(player_x) 
 
-        print(f'players ln M56 :  {players}') 
-        print(f'players ln M57 :  {players[0].lastname}')  # inversés 
+        print(f'players PM60 :  {players}') 
+        print(f'players[0].lastname PM61 :  {players[0].lastname}') 
         
         return players 
 

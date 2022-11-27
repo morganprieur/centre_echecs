@@ -15,11 +15,54 @@ class Round_view():
     matches_obj_start = Match.matches_obj_start 
     # print(f'matches_obj_start RV15 : {Match.matches_obj_start}')  # liste vide 
     
-    def get_scores_round_1(players_round_1):  # matches_obj_1 
+    def __init__(self, scores_players_round_1, matches_obj_start):
+        self.scores_players_round_1 = scores_players_round_1 
+        self.matches_obj_start = matches_obj_start 
+    
+
+    def start_round_1(self): 
+        Round_view.get_scores_round_1(self.matches_obj_start, self.scores_players_round_1) 
+        # Round_view.get_score_one_player_round_1(self.matches_obj_start) 
+        Round_view.get_scores_round_1(
+            self.scores_players_round_1, 
+            self.matches_obj_start 
+        )
+
+    # cycle round_1 pour 1 joueur 
+    def get_score_one_player_round_1(matches_obj_start):  # , id_ 
+        score_player_1_round_1 = {} 
+
+
+
+        # ask for each player's score 
+        ask_for_player_s_score_round_1 = session.prompt(
+            # f'Entrer le score du joueur {id_} pour le round 1 : \n' 
+            f'Entrer le score du joueur 1 pour le round 1 : \n' 
+        ) 
+        # score_player_1_round_1['player'] = id_ 
+        score_player_1_round_1['player'] = 1 
+        score_player_1_round_1['score'] = ask_for_player_s_score_round_1 
+
+        print(f'score_player_round_1 RV40 : {score_player_1_round_1}') 
+        print(f'type(score_player_1_round_1) RV64 : {type(score_player_1_round_1)}') 
+
+        # add the current scores in the players table data 
+        # get the match_table data (temporary table) 
+        # store the rounds' scores in the list of matches for the current round 
+        
+    # ensuite pour tous les joueurs
+    def get_scores_round_1(matches_obj_start, scores_players_round_1):  # matches_obj_1 
         # créer des dicts pour stocker les joueurs, leur score et les joueurs contre qui ils ont déjà joué 
         # créer une liste pour stocker les dicts 
         # récupérer les scores des joueurs (input) 
         # les enregistrer dans les tuples 
+
+        # for i in range(8): 
+        #     id_ = i 
+        score_player_1_round_1 = Round_view.get_score_one_player_round_1(
+            matches_obj_start 
+            # , id_ 
+        ) 
 
 
         # scores_round_1 = [] 
@@ -43,30 +86,15 @@ class Round_view():
 
         # Récupérer et traiter les données du joueur 1 : 
         # players_round_1 = [] 
-        score_player_1_round_1 = {} 
+        # score_player_1_round_1 = {} 
         # ask for player's end of match 
         # ask_for_player_s_id = session.prompt(
         #     'Entrer l\'id du joueur : \n' 
         # ) 
-        ask_for_player_s_adversary = session.prompt(
-            'Entrer l\'id de son adersaire : \n' 
-        ) 
-        ask_for_player_s_score_round_1 = session.prompt(
-            'Entrer le score du joueur pour le round 1 : \n' 
-        ) 
-        score_player_1_round_1['player'] = 1 
-        score_player_1_round_1['adversary'] = ask_for_player_s_adversary 
-        score_player_1_round_1['score'] = ask_for_player_s_score_round_1 
+        scores_players_round_1.append(score_player_1_round_1) 
+        print(f'scores_players_round_1 RV95 : {scores_players_round_1}') 
 
-        # if ask_for_player_s_id == 1: 
-        #     player_1_round_1['adversary'] = ask_for_player_s_adversary 
-        #     player_1_round_1['score'] = ask_for_player_s_score_round_1 
-        print(f'score_player_1_round_1 RV63 : {score_player_1_round_1}') 
-        print(f'type(score_player_1_round_1) RV64 : {type(score_player_1_round_1)}') 
-
-        Round_view.scores_players_round_1.append(score_player_1_round_1) 
-
-        return Round_view.scores_players_round_1 
+        return scores_players_round_1 
 
         # Vérifier les données 
 

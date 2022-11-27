@@ -34,20 +34,12 @@ if __name__ == "__main__":
 
     Player_controller.start() 
 
-    # player_x = Player( 
-    #     lastname=formated_players[data_dict]['lastname'], 
-    #     firstname=formated_players[data_dict]['firstname'], 
-    #     birthdate=formated_players[data_dict]['birthdate'], 
-    #     genre=formated_players[data_dict]['genre'], 
-    #     classement=formated_players[data_dict]['classement']
-    # )  
-
     # dashboard 
     # welcome = Dashboard_view.welcome_view(Dashboard_view) 
     
     # Player_controller.start() 
-    Match_controller.start_matches() 
-    Round_controller.start_round_1() 
+    Match_controller.start_matches(Match_controller) 
+    Round_controller.start_round_1(Round_controller) 
     
     # p_table_class = Player_controller.sort_players_by_classement()  # Player 
     # players_ids = Player_controller.get_players_ids(p_table_class) 

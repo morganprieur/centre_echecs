@@ -16,18 +16,11 @@ players_table = db.table('players')
 
 
 class Player_controller(): 
-
-    # def __init__(self): 
-
-    #     self.start() 
-
-    ### possible ou pas ? comment faire ? ### 
-    # players_to_register = int 
-    # test_or_not = str 
-    # formated_player_data = dict 
-    # formated_player = list 
-
-    # players = Player.players 
+    """ This class matters in getting the players data in a list of dicts, 
+        throw them to the Player_model who instantiate them, 
+        and serialize them, 
+        and register them in the table 'players' in the DB. 
+    """
 
     def start(): 
         print('[Player_controller] start') 
@@ -44,6 +37,7 @@ class Player_controller():
         Player.instantiate_players(init_players.formated_players, Player.players) 
         # print(f'players PC53 : {Player.players}')  # ok 
 
+        # décommenter : 
         Player.serialize_multi_players(Player.players, Player.serialized_players) 
         # print(f'serialized_players PC57 : {Player.serialized_players}')     # ok 
 

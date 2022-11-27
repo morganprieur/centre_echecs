@@ -11,7 +11,11 @@ from datetime import datetime
 
 
 class Round(): 
-    """ un round : un nom ("round 1"...), liste de 4 matches, un début (datetime), une fin (datetime) 
+    """ un round : 
+            un nom ("round 1", ...), 
+            liste de 4 matches, 
+            un début (datetime), 
+            une fin (datetime) 
     """ 
 
     round_name = str 
@@ -26,8 +30,12 @@ class Round():
         fin = self.fin 
 
     def __str__(self): 
+        begin_phrase = f'Tour : {self.round_name}, \nmatches : \n' 
+        end_phrase = f' début : {self.debut}, fin : \n{self.fin}' 
         for m in self.matches:
-            return f'Tour : {self.round_name}, \nmatches : \n{self.matches[m]}, \ndébut : {self.debut}, fin : \n{self.fin}' 
+            matches_phrase = f'{self.matches[m]}' 
+        phrase = f'{begin_phrase} {matches_phrase} {end_phrase}' 
+        return phrase 
 
 
     def instantiate_round(scores_round_1): 
