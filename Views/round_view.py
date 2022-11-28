@@ -21,12 +21,15 @@ class Round_view():
     
 
     def start_round_1(self): 
-        Round_view.get_scores_round_1(self.matches_obj_start, self.scores_players_round_1) 
+        Round_view.get_scores_round_1( 
+            self.matches_obj_start, 
+            self.scores_players_round_1 
+        ) 
         # Round_view.get_score_one_player_round_1(self.matches_obj_start) 
-        Round_view.get_scores_round_1(
-            self.scores_players_round_1, 
-            self.matches_obj_start 
-        )
+        # Round_view.get_scores_round_1(
+        #     self.scores_players_round_1, 
+        #     self.matches_obj_start 
+        # )
 
     # cycle round_1 pour 1 joueur 
     def get_score_one_player_round_1(matches_obj_start):  # , id_ 
@@ -48,6 +51,8 @@ class Round_view():
         # add the current scores in the players table data 
         # get the match_table data (temporary table) 
         # store the rounds' scores in the list of matches for the current round 
+
+        return score_player_1_round_1 
         
     # ensuite pour tous les joueurs
     def get_scores_round_1(matches_obj_start, scores_players_round_1):  # matches_obj_1 
