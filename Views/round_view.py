@@ -33,7 +33,6 @@ class Round_view():
         score_player_1_round_1 = {} 
 
 
-
         # ask for each player's score 
         ask_for_player_s_score_round_1 = session.prompt(
             # f'Entrer le score du joueur {id_} pour le round 1 : \n' 

@@ -24,7 +24,7 @@ class Match():
 
 
     def instantiate_matches_start(matches_start): 
-        # print(f'matches_start MM37 : {matches_start}') 
+        print(f'matches_start MM27 : {matches_start}') 
         matches_obj_start = [] 
         # instancier les matches 
         # liste de matches : matches_start 
