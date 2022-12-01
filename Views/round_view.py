@@ -20,16 +20,28 @@ class Round_view():
         self.matches_obj_start = matches_obj_start 
     
 
-    def start_round_1(self): 
+    def start_round_1(self, matches_obj_start, scores_players_round_1): 
         Round_view.get_scores_round_1( 
-            self.matches_obj_start, 
-            self.scores_players_round_1 
+            matches_obj_start, 
+            scores_players_round_1 
         ) 
         # Round_view.get_score_one_player_round_1(self.matches_obj_start) 
         # Round_view.get_scores_round_1(
         #     self.scores_players_round_1, 
         #     self.matches_obj_start 
         # )
+    
+    """ Exemple création d'un objet, doc drf 
+    from datetime import datetime
+
+    class Comment:
+        def __init__(self, email, content, created=None):
+            self.email = email
+            self.content = content
+            self.created = created or datetime.now()
+
+    comment = Comment(email='leila@example.com', content='foo bar')
+    """
 
     # cycle round_1 pour 1 joueur 
     def get_score_one_player_round_1(matches_obj_start):  # , id_ 
@@ -60,6 +72,8 @@ class Round_view():
         # créer une liste pour stocker les dicts 
         # récupérer les scores des joueurs (input) 
         # les enregistrer dans les tuples 
+        print(f'self RV75 : {matches_obj_start}') 
+        print(f'self RV76 : {scores_players_round_1}') 
 
         # for i in range(8): 
         #     id_ = i 

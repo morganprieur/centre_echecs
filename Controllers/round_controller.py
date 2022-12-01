@@ -18,9 +18,13 @@ class Round_controller():
     def start_round_1(self): 
         print('[round_controller] start round 1') 
 
+        Round_view.start_round_1(
+            Round_view, 
+            Round_view.matches_obj_start, 
+            Round_view.scores_players_round_1
+        ) 
         Round_controller.round_1(self.scores_players_round_1) 
         # print(f'matches_obj_start RC15 : {Round_controller.matches_obj_start}') 
-        Round_view.start_round_1(Round_view) 
 
 
     ## round 1 
